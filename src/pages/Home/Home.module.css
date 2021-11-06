@@ -1,0 +1,31 @@
+.homeContainer {
+  height: 92%;
+  background-image: url('../../assets/landing-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.footerContainer {
+  height: 8%;
+}
+
+.formWrapper {
+  display: flex;
+  margin: 5rem auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.formContainer {
+  display: flex;
+  height: 4rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 4rem;
+}
+
+.searchIcon {
+  height: 100%;
+  padding: 0 5px;
+  width: 2rem;
+}

@@ -1,0 +1,108 @@
+.homeContainer {
+  /* height: 92%; */
+  /* background-image: url('../../assets/landing-bg.jpg');
+  background-size: cover;
+  background-position: center; */
+}
+
+.footerContainer {
+  height: 8%;
+}
+
+.listSummary {
+  color: #4d4d4d;
+  padding: 2rem;
+  text-align: left;
+  margin: 0 22rem;
+}
+
+.filterDetails {
+  font-size: 0.9rem;
+}
+
+.locationDetails {
+  margin-top: 0.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.hotelListWrapper {
+  margin: 0 22rem;
+  padding: 2rem;
+}
+
+.hotelListItem {
+  height: 15rem;
+  display: flex;
+  margin: 1.5rem 0;
+}
+
+.hotelListItem img {
+  height: 100%;
+  width: 15rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+}
+
+.descriptionContainer {
+  height: 100%;
+  text-align: left;
+  position: relative;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+
+.descriptionHeader {
+  font-size: 1.4rem;
+  padding: 0 0rem 0.2rem 0rem;
+}
+
+.descriptionSubHeader {
+  font-size: 0.8rem;
+  padding: 0 0rem 1rem 0rem;
+}
+
+.amnities {
+  color: #7e7e7e;
+}
+
+.viewButton {
+  background-color: #a2d2ff;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  outline-style: none;
+  outline: none;
+  margin-top: 1rem !important;
+  width: fit-content;
+}
+
+.reviewContainer {
+  position: absolute;
+  bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.priceContainer {
+  position: absolute;
+  bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.priceContainer {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  /* font-size: 0.7rem; */
+}
+
+.perDayPrice span {
+  font-size: 0.8rem;
+}
+
+.totalPrice {
+  font-size: 0.8rem;
+  float: right;
+  color: #4d4d4d;
+}

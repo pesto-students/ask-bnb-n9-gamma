@@ -1,0 +1,29 @@
+.headerContainer {
+  display: block;
+  position: relative;
+  padding: 2rem;
+}
+
+.logoContainer {
+  display: inline-flex;
+  float: left;
+  padding-left: 3rem;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(5vh - 20%);
+  color: #ffffff;
+}
+
+.logoContainer > img {
+  margin-right: 5px;
+}
+
+.buttonContainer {
+  display: inline-block;
+  position: absolute;
+  right: 10rem;
+}
+
+.buttonPadding {
+  padding: 1rem 3rem !important;
+}

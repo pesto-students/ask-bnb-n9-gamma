@@ -20,11 +20,12 @@ const HotelList = () => {
       reviews: '11',
       ratings: '4.5',
       averagePrice: '1000',
+      _id: 1,
       image:
         'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
     },
     {
-      hotelDetail: '1 BHK Service Apartment',
+      hotelDetail: '1 BHK Service Apartment 2',
       note: 'Fully furnished apartment in HRS Layout',
       amnities: [
         '2 guest',
@@ -38,11 +39,12 @@ const HotelList = () => {
       reviews: '11',
       ratings: '4.5',
       averagePrice: '1000',
+      _id: 2,
       image:
         'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
     },
     {
-      hotelDetail: '1 BHK Service Apartment',
+      hotelDetail: '1 BHK Service Apartment 3',
       note: 'Fully furnished apartment in HRS Layout',
       amnities: [
         '2 guest',
@@ -56,11 +58,12 @@ const HotelList = () => {
       reviews: '11',
       ratings: '4.5',
       averagePrice: '1000',
+      _id: 3,
       image:
         'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
     },
     {
-      hotelDetail: '1 BHK Service Apartment',
+      hotelDetail: '1 BHK Service Apartment 4',
       note: 'Fully furnished apartment in HRS Layout',
       amnities: [
         '2 guest',
@@ -74,11 +77,12 @@ const HotelList = () => {
       reviews: '11',
       ratings: '4.5',
       averagePrice: '1000',
+      _id: 4,
       image:
         'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
     },
     {
-      hotelDetail: '1 BHK Service Apartment',
+      hotelDetail: '1 BHK Service Apartment 5',
       note: 'Fully furnished apartment in HRS Layout',
       amnities: [
         '2 guest',
@@ -92,11 +96,12 @@ const HotelList = () => {
       reviews: '11',
       ratings: '4.5',
       averagePrice: '1000',
+      _id: 5,
       image:
         'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
     },
     {
-      hotelDetail: '1 BHK Service Apartment',
+      hotelDetail: '1 BHK Service Apartment 6',
       note: 'Fully furnished apartment in HRS Layout',
       amnities: [
         '2 guest',
@@ -110,11 +115,12 @@ const HotelList = () => {
       reviews: '11',
       ratings: '4.5',
       averagePrice: '1000',
+      _id: 6,
       image:
         'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
     },
     {
-      hotelDetail: '1 BHK Service Apartment',
+      hotelDetail: '1 BHK Service Apartment 7',
       note: 'Fully furnished apartment in HRS Layout',
       amnities: [
         '2 guest',
@@ -128,6 +134,7 @@ const HotelList = () => {
       reviews: '11',
       ratings: '4.5',
       averagePrice: '1000',
+      _id: 7,
       image:
         'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
     },
@@ -147,44 +154,10 @@ const HotelList = () => {
           </div>
           <div className={styles.locationDetails}>Stay in Bangalore</div>
         </div>
-        <div className={styles.hotelListWrapper}>
-          {getIndividualItems()}
-          {/* <div className={style.hotelListItem}>
-            <img
-              src='https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE='
-              alt=''
-            />
-            <div className={style.descriptionContainer}>
-              <div className={style.descriptionHeader}>
-                1 BHK Service Apartment
-              </div>
-              <div className={style.descriptionSubHeader}>
-                Fully furnished apartment in HRS Layout
-              </div>
-              <div className={style.amnities}>All - Amnities - Goes - Here</div>
-              <div className={style.amnities}>All - Amnities - Goes - Here</div>
-              <Button className={style.viewButton} color='teal'>
-                View Rooms
-              </Button>
-              <div className={style.reviewContainer}>
-                <FaStar color='yellow' /> 4.5 (<span>11 reviews</span>)
-              </div>
-              <div className={style.priceContainer}>
-                <div className={style.perDayPrice}>
-                  Rs. 1000 <span>/ night</span>
-                </div>
-                <div className={style.totalPrice}>Rs. 4000 total</div>
-              </div>
-            </div>
-          </div> */}
-        </div>
+        <div className={styles.hotelListWrapper}>{getIndividualItems()}</div>
       </div>
       <Footer className={styles.footerContainer} />
     </>
-    // <div>
-    //   <h1>Hotel Listing</h1>
-    //   HotelList page is here
-    // </div>
   );
 };
 

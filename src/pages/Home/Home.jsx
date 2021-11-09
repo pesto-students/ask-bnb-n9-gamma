@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <div className={style.homeContainer}>
-        <Header />
+        <Header transparent={true} />
         <div className='searchBarContainer'>
           <form className={style.formWrapper}>
             <div className={style.formContainer}>

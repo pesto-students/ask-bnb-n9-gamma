@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const HotelList = ({ hotelList }) => {
-  console.log(hotelList);
+  // console.log(hotelList);
   const getIndividualItems = () => {
     return hotelList.map(item => (
       <HotelListItem key={item._id} styles={styles} data={item} />

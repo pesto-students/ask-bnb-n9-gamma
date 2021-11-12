@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './HotelList.module.css';
 
 const HotelListItem = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <hr />

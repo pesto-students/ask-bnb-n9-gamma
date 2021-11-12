@@ -2,6 +2,11 @@
   display: block;
   position: relative;
   padding: 2rem;
+  height: 6rem;
+}
+
+.addColor {
+  background-color: #665f5f;
 }
 
 .logoContainer {

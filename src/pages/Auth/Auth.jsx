@@ -50,6 +50,7 @@ const Auth = () => {
 
     // Extract the data from the response object
     const payload = response.data;
+    localStorage.setItem('auth-token', payload.data.token);
     console.log(payload);
   };
 

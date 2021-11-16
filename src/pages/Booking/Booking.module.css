@@ -1,0 +1,17 @@
+.logo {
+  height: 64px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.item {
+  float: left;
+}
+
+.price {
+  float: right;
+}
+
+.hotelDetails {
+  display: inline;
+}

@@ -3,8 +3,10 @@ import { Button, Form, Modal, Icon } from 'semantic-ui-react';
 import styles from './Auth.module.css';
 import axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
+import { useHistory, Redirect } from 'react-router-dom';
 
 const Auth = () => {
+  // const history = useHistory();
   const [open, setOpen] = useState(true);
   const [hideSignIn, setHideSignIn] = useState(false);
   const [hideSignUp, setHideSignUp] = useState(true);
@@ -51,7 +53,10 @@ const Auth = () => {
     // Extract the data from the response object
     const payload = response.data;
     localStorage.setItem('auth-token', payload.data.token);
+    localStorage.setItem('isAuthenticated', true);
     console.log(payload);
+    //history.goBack();
+    return <Redirect to="/booking" />;
   };
 
   // Handles onSubmit event of Register form

@@ -1,0 +1,18 @@
+.hotelName {
+  font-size: xx-large;
+}
+
+.cityName {
+  font-size: large;
+}
+
+.checkIn,
+.checkOut,
+.guests {
+  font-size: medium;
+  text-align: center;
+}
+
+.status {
+  font-size: medium;
+}

@@ -7,7 +7,7 @@ import {
   Button,
   Container,
   Image,
-  Header as Heading,
+  Message,
 } from 'semantic-ui-react';
 import Header from '../shared/Header';
 import styles from './Booking.module.css';
@@ -16,8 +16,14 @@ import upi from './images/upi.png';
 import mastercard from './images/mastercard.png';
 import moment from 'moment';
 import axios from 'axios';
+import { useState } from 'react';
 
 const Booking = () => {
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+
   const booking_details = {
     hotel_id: '1',
     hotel_name: 'Hotel Paradise',
@@ -109,6 +115,13 @@ const Booking = () => {
         });
         const payload = res.data;
         console.log(payload);
+        if (payload.code === 400) {
+          setErrorMessage(payload.message);
+          setShowErrorMessage(true);
+        } else {
+          setSuccessMessage(payload.message);
+          setShowSuccessMessage(true);
+        }
       },
       theme: {
         color: '#3399cc',
@@ -129,6 +142,12 @@ const Booking = () => {
     <>
       <Header />
       <Container textAlign="left">
+        <Message success hidden={!showSuccessMessage}>
+          {successMessage}
+        </Message>
+        <Message error hidden={!showErrorMessage}>
+          {errorMessage}
+        </Message>
         <h1>Confirm and Pay</h1>
         <Grid stackable>
           <Grid.Column width={10}>

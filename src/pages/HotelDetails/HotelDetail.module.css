@@ -86,6 +86,10 @@
   align-items: center;
 }
 
+.delux.roomCustomizationContainer {
+  border: solid 1px #dbb330;
+}
+
 .verticalLine {
   width: 0.5px;
   height: 95%;
@@ -109,7 +113,7 @@ ul {
 
 .roomSelection,
 .priceContainer {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -158,6 +162,7 @@ ul {
   /* justify-content: center; */
   /* width: 40%; */
   padding: 0 1rem;
+  cursor: pointer;
 }
 
 .addRoom span {
@@ -196,4 +201,5 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }

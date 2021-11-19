@@ -76,6 +76,13 @@ const HotelDetail = ({
     return rooms_selected;
   };
 
+  const getRoomType = () => {
+    return currentHotel?.room_collection?.standard[0].room_type
+      .join(' - ')
+      .toString();
+  };
+
+  // HOF
   const getRoomDetails = room_data => (
     <div>
       {roomsSelected.slice(0, roomCount).map((room, index) => {
@@ -122,12 +129,6 @@ const HotelDetail = ({
       })}
     </>
   );
-
-  const getRoomType = () => {
-    return currentHotel?.room_collection?.standard[0].room_type
-      .join(' - ')
-      .toString();
-  };
 
   const getAmenityList = array => (
     <ul>

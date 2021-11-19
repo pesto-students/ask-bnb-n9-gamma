@@ -8,17 +8,22 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
+import NoHotels from './NoHotels';
 
 const moment = extendMoment(Moment);
 
-const HotelList = ({ hotel: { filter, hotelList }, getHotels, history }) => {
+const HotelList = ({
+  hotel: { filter, hotelList, loading },
+  getHotels,
+  history,
+}) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   // const [range1, setRange1] = useState(null);
   const range1 = moment.range(startDate, endDate);
 
   useEffect(() => {
-    getHotels('Bangalore');
+    getHotels(filter.location);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,11 +33,7 @@ const HotelList = ({ hotel: { filter, hotelList }, getHotels, history }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
-  // useEffect(() => {
-  //   setRange1(moment.range(startDate, endDate));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [startDate, endDate]);
-
+  // HOF
   const getIndividualItems = () => {
     return hotelList.map(item => (
       <HotelListItem
@@ -43,8 +44,6 @@ const HotelList = ({ hotel: { filter, hotelList }, getHotels, history }) => {
       />
     ));
   };
-  // useEffect(() => {
-  // }, [hotelList])
 
   return (
     <>
@@ -56,9 +55,19 @@ const HotelList = ({ hotel: { filter, hotelList }, getHotels, history }) => {
             {moment(endDate).format('Do MMMM')} | {range1.diff('days')} days |{' '}
             {filter.guests} guests
           </div>
-          <div className={styles.locationDetails}>Stay in Bangalore</div>
+          <div className={styles.locationDetails}>
+            Stay in{' '}
+            {filter.location.replace(
+              /(^\w{1}|\.\s*\w{1})/gi,
+              function (toReplace) {
+                return toReplace.toUpperCase();
+              }
+            )}
+          </div>
         </div>
-        <div className={styles.hotelListWrapper}>{getIndividualItems()}</div>
+        <div className={styles.hotelListWrapper}>
+          {hotelList.length ? getIndividualItems() : <NoHotels />}
+        </div>
       </div>
       <Footer className={styles.footerContainer} />
     </>

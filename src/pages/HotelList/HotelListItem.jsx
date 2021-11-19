@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 
 const HotelListItem = prop => {
   const { data, history, setCurrentRoom } = prop;
-  // const {amnities, averagePrice, } = data
 
   const getRoomType = () => {
     return data?.room_collection?.delux[0].room_type.join(' - ').toString();
   };
+
   const getAmenities = () => {
     return data.amenities?.splice(0, 4).join(' - ');
   };
@@ -37,8 +37,6 @@ const HotelListItem = prop => {
             color='teal'>
             View Rooms
           </Button>
-          {/* <Link to={`/hotel/${data._id}`}>
-          </Link> */}
           <div className={styles.reviewContainer}>
             <FaStar color='yellow' /> {data.ratings} (
             <span>{data.reviews}</span>)

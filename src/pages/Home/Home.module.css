@@ -46,8 +46,53 @@
   text-overflow: ellipsis !important; */
 }
 
-input:focus {
-  outline: none;
+input {
+  border: 0;
+  text-align: center;
 }
+
+input:focus {
+  border-bottom: 1px solid #8a8a8ac5;
+  outline: none;
+  padding: 0 1rem !important;
+  margin: 0 1rem !important;
+}
+
+.vl {
+  height: 100%;
+  width: 1px;
+  margin: 0 0.5rem;
+  background-color: #8a8a8ac5;
+}
+
+input[type='number'] {
+  width: 5rem;
+  /* color: lightgray;
+  content: attr(placeholder); */
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+button[type='submit'] {
+  background-color: #fff;
+  outline: none;
+  border-color: #b8b8b8;
+  border-radius: 2rem;
+  height: 3rem;
+  width: 3rem;
+  position: relative;
+  bottom: 0.5rem;
+}
+
+/* input[type='date']:not(.has-value):before {
+  color: lightgray;
+  content: attr(placeholder);
+} */
 
 /* Input bar container - ends */

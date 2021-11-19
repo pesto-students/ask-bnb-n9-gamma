@@ -4,7 +4,7 @@ import styles from './Header.module.css';
 import logo from './ASK.svg';
 
 const Header = ({ transparent }) => {
-  console.log(transparent);
+  // console.log(transparent);
   return (
     <div
       className={`${styles.headerContainer} 

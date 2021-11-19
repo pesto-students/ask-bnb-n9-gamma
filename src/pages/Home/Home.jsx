@@ -13,7 +13,7 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
     filter?.startDate || new Date().toLocaleDateString()
   );
   const [endDate, setEndDate] = useState(filter?.endDate || '');
-  const [guests, setGuests] = useState(filter?.guests || 0);
+  const [guests, setGuests] = useState(filter?.guests || 2);
 
   const onSubmit = () => {
     addFilters({ location, startDate, endDate, guests });
@@ -32,7 +32,9 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                 placeholder='Where are you going?'
                 value={location}
                 onChange={e => setLocation(e.target.value)}
+                required
               />
+              <div className={styles.vl}></div>
               <input
                 type='date'
                 name='startDate'
@@ -42,22 +44,27 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                   .toISOString()
                   .slice(0, -14)}
                 onChange={e => setStartDate(e.target.value)}
+                required
               />
+              <div className={styles.vl}></div>
               <input
                 type='date'
                 name='endDate'
                 value={endDate}
-                min={new Date().toISOString().slice(0, -14)}
+                min={startDate}
                 max={new Date(new Date().setDate(new Date().getDate() + 14))
                   .toISOString()
                   .slice(0, -14)}
                 onChange={e => setEndDate(e.target.value)}
+                required
               />
+              <div className={styles.vl}></div>
               <input
                 type='number'
                 name='guests'
                 value={guests}
                 onChange={e => setGuests(e.target.value)}
+                required
               />
               <button type='submit'>
                 <FaSearch color='grey' className={styles.searchIcon} />

@@ -8,14 +8,26 @@ const Home = () => {
     <>
       <div className={style.homeContainer}>
         <Header />
-        <div className='searchBarContainer'>
+        <div className="searchBarContainer">
           <form className={style.formWrapper}>
             <div className={style.formContainer}>
-              <input type='text' />
-              <input type='datetime-local' name='check-in' id='' />
-              <input type='datetime-local' name='check-out' id='' />
-              <input type='number' name='' id='' />
-              <FaSearch color='grey' className={style.searchIcon} />
+              <input type="text" data-testid="location" />
+              <input
+                type="datetime-local"
+                name="check-in"
+                data-testid="checkin"
+              />
+              <input
+                type="datetime-local"
+                name="check-out"
+                data-testid="checkout"
+              />
+              <input type="number" name="" data-testid="guests" />
+              <FaSearch
+                color="grey"
+                className={style.searchIcon}
+                data-testid="searchbutton"
+              />
             </div>
           </form>
         </div>

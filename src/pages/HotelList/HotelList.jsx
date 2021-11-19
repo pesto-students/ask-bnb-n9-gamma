@@ -141,20 +141,24 @@ const HotelList = () => {
   ];
 
   const getIndividualItems = () => {
-    return hotelList.map(item => <HotelListItem styles={styles} data={item} />);
+    return hotelList.map((item) => (
+      <HotelListItem styles={styles} data={item} />
+    ));
   };
 
   return (
     <>
       <div>
-        <Header color='#2E2E2E' />
-        <div className={styles.listSummary}>
+        <Header color="#2E2E2E" />
+        <div className={styles.listSummary} data-testid="listsummary">
           <div className={styles.filterDetails}>
             100+ stays | 18th October to 21st October | 2 guests
           </div>
           <div className={styles.locationDetails}>Stay in Bangalore</div>
         </div>
-        <div className={styles.hotelListWrapper}>{getIndividualItems()}</div>
+        <div className={styles.hotelListWrapper} data-testid="hotellist">
+          {getIndividualItems()}
+        </div>
       </div>
       <Footer className={styles.footerContainer} />
     </>

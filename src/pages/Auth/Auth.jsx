@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Button, Form, Modal, Icon } from 'semantic-ui-react';
 import styles from './Auth.module.css';
 import axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
-import { useHistory, Redirect } from 'react-router-dom';
 
-const Auth = () => {
+const Auth = (props) => {
   // const history = useHistory();
   const [open, setOpen] = useState(true);
   const [hideSignIn, setHideSignIn] = useState(false);
@@ -53,10 +53,12 @@ const Auth = () => {
     // Extract the data from the response object
     const payload = response.data;
     localStorage.setItem('auth-token', payload.data.token);
+    localStorage.setItem('username', payload.data.name);
     localStorage.setItem('isAuthenticated', true);
     console.log(payload);
     //history.goBack();
-    return <Redirect to="/booking" />;
+    console.log(props.location.state.referrer);
+    window.location.href = props.location.state.referrer;
   };
 
   // Handles onSubmit event of Register form
@@ -90,7 +92,13 @@ const Auth = () => {
       data: { tokenId: response.tokenId },
     }).then((response) => {
       const payload = response.data;
+      localStorage.setItem('auth-token', payload.data.token);
+      localStorage.setItem('username', payload.data.name);
+      localStorage.setItem('isAuthenticated', true);
       console.log(payload);
+      //history.goBack();
+      console.log(props.location.state.referrer);
+      window.location.href = props.location.state.referrer;
     });
   };
 
@@ -109,6 +117,7 @@ const Auth = () => {
               className={styles.form}
               hidden={hideSignIn}
               onSubmit={handleLoginSubmit}
+              data-testid="loginform"
             >
               <Form.Field className={styles.inputField}>
                 <input
@@ -116,6 +125,7 @@ const Auth = () => {
                   placeholder="Email"
                   name="email"
                   onChange={handleChange}
+                  data-testid="loginemail"
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
@@ -125,6 +135,7 @@ const Auth = () => {
                   placeholder="Password"
                   name="password"
                   onChange={handleChange}
+                  data-testid="loginpassword"
                 />
               </Form.Field>
               <Button
@@ -132,6 +143,7 @@ const Auth = () => {
                 color="black"
                 className={styles.button}
                 type="submit"
+                data-testid="loginsubmit"
               >
                 Continue
               </Button>
@@ -156,6 +168,7 @@ const Auth = () => {
                   placeholder="Full Name"
                   name="name"
                   onChange={handleChange}
+                  data-testid="registername"
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
@@ -164,6 +177,7 @@ const Auth = () => {
                   placeholder="Email"
                   name="email"
                   onChange={handleChange}
+                  data-testid="registeremail"
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
@@ -173,6 +187,7 @@ const Auth = () => {
                   placeholder="Password"
                   name="password"
                   onChange={handleChange}
+                  data-testid="registerpassword"
                 />
               </Form.Field>
               <Button
@@ -180,6 +195,7 @@ const Auth = () => {
                 color="black"
                 className={styles.button}
                 type="submit"
+                data-testid="registersubmit"
               >
                 Sign Up Now
               </Button>

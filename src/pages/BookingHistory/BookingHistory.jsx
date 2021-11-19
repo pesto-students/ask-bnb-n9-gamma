@@ -21,6 +21,7 @@ const BookingHistory = () => {
               <Grid.Column width={10}>
                 <span className={styles.hotelName}>Hotel Paradise </span>
                 <br />
+                <br />
                 <span className={styles.cityName}>Bangalore</span>
               </Grid.Column>
               <Grid.Column width={6}>

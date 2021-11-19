@@ -19,7 +19,12 @@
   margin-right: 5px;
 }
 
-.buttonContainer {
+.authButton {
+  color: black;
+}
+
+.buttonContainer,
+.avatarContainer {
   display: inline-block;
   position: absolute;
   right: 10rem;

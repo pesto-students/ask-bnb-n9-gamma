@@ -8,6 +8,8 @@ import {
   SHOW_ALERT,
 } from './types';
 
+const API_ENDPOINT = process.env.REACT_APP_API_URL;
+
 export const addFilters = filters => async dispatch => {
   try {
     dispatch({
@@ -22,7 +24,7 @@ export const addFilters = filters => async dispatch => {
 export const getHotels = location => async dispatch => {
   try {
     setLoading();
-    const res = await axios.get('http://localhost:9000/api/hotel/getHotels', {
+    const res = await axios.get(`${API_ENDPOINT}api/hotel/getHotels`, {
       params: { location, select: '' },
     });
     const data = res.data;
@@ -45,7 +47,7 @@ export const blockRooms =
       console.log(body);
       if (startDate && endDate) {
         const res = await axios.post(
-          'http://localhost:9000/api/hotel/blockRooms',
+          `${API_ENDPOINT}api/hotel/blockRooms`,
           body
         );
         console.log(res.data.data);

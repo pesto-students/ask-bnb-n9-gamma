@@ -4,6 +4,8 @@ import styles from './Auth.module.css';
 import axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
 
+const API_ENDPOINT = process.env.REACT_APP_API_URL;
+
 const Auth = () => {
   const [open, setOpen] = useState(true);
   const [hideSignIn, setHideSignIn] = useState(false);
@@ -26,14 +28,14 @@ const Auth = () => {
   };
 
   // Handles onChange event of input fields
-  const handleChange = (event) => {
+  const handleChange = event => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    setInputs(values => ({ ...values, [name]: value }));
   };
 
   // Handles onSubmit event of Login form
-  const handleLoginSubmit = async (event) => {
+  const handleLoginSubmit = async event => {
     event.preventDefault();
     console.log('From login submit');
     console.log(inputs);
@@ -41,7 +43,7 @@ const Auth = () => {
     // Send a POST request
     const response = await axios({
       method: 'post',
-      url: 'http://localhost:9000/api/user/login',
+      url: `${API_ENDPOINT}api/user/login`,
       data: {
         email: inputs.email,
         password: inputs.password,
@@ -54,7 +56,7 @@ const Auth = () => {
   };
 
   // Handles onSubmit event of Register form
-  const handleRegisterSubmit = async (event) => {
+  const handleRegisterSubmit = async event => {
     event.preventDefault();
     console.log('From register submit');
     console.log(inputs);
@@ -62,7 +64,7 @@ const Auth = () => {
     // Send a POST request
     const response = await axios({
       method: 'post',
-      url: 'http://localhost:9000/api/user/register',
+      url: `${API_ENDPOINT}api/user/register`,
       data: {
         name: inputs.name,
         email: inputs.email,
@@ -76,13 +78,13 @@ const Auth = () => {
   };
 
   // Handles Google login onSuccess
-  const responseGoogle = (response) => {
+  const responseGoogle = response => {
     console.log(response);
     axios({
       method: 'POST',
-      url: 'http://localhost:9000/api/user/googlelogin',
+      url: `${API_ENDPOINT}api/user/googlelogin`,
       data: { tokenId: response.tokenId },
-    }).then((response) => {
+    }).then(response => {
       const payload = response.data;
       console.log(payload);
     });
@@ -91,42 +93,39 @@ const Auth = () => {
   return (
     <>
       <Modal
-        size="tiny"
+        size='tiny'
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
-        open={open}
-      >
+        open={open}>
         <Modal.Content>
           <div className={styles.modalContent}>
             <h3>{formHeader}</h3>
             <Form
               className={styles.form}
               hidden={hideSignIn}
-              onSubmit={handleLoginSubmit}
-            >
+              onSubmit={handleLoginSubmit}>
               <Form.Field className={styles.inputField}>
                 <input
                   value={inputs.email}
-                  placeholder="Email"
-                  name="email"
+                  placeholder='Email'
+                  name='email'
                   onChange={handleChange}
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
                 <input
                   value={inputs.password}
-                  type="password"
-                  placeholder="Password"
-                  name="password"
+                  type='password'
+                  placeholder='Password'
+                  name='password'
                   onChange={handleChange}
                 />
               </Form.Field>
               <Button
                 basic
-                color="black"
+                color='black'
                 className={styles.button}
-                type="submit"
-              >
+                type='submit'>
                 Continue
               </Button>
               <span style={{ marginTop: '10px' }}>
@@ -142,39 +141,37 @@ const Auth = () => {
             <Form
               className={styles.form}
               hidden={hideSignUp}
-              onSubmit={handleRegisterSubmit}
-            >
+              onSubmit={handleRegisterSubmit}>
               <Form.Field className={styles.inputField}>
                 <input
                   value={inputs.name}
-                  placeholder="Full Name"
-                  name="name"
+                  placeholder='Full Name'
+                  name='name'
                   onChange={handleChange}
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
                 <input
                   value={inputs.email}
-                  placeholder="Email"
-                  name="email"
+                  placeholder='Email'
+                  name='email'
                   onChange={handleChange}
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
                 <input
                   value={inputs.password}
-                  type="password"
-                  placeholder="Password"
-                  name="password"
+                  type='password'
+                  placeholder='Password'
+                  name='password'
                   onChange={handleChange}
                 />
               </Form.Field>
               <Button
                 basic
-                color="black"
+                color='black'
                 className={styles.button}
-                type="submit"
-              >
+                type='submit'>
                 Sign Up Now
               </Button>
               <span style={{ marginTop: '10px' }}>
@@ -186,20 +183,19 @@ const Auth = () => {
             </Form>
             <div className={styles.or}>OR</div>
             <GoogleLogin
-              clientId="62568579646-22dpn8tc7i77jg2c0mmtestk55nm1naj.apps.googleusercontent.com"
-              render={(renderProps) => (
+              clientId='62568579646-22dpn8tc7i77jg2c0mmtestk55nm1naj.apps.googleusercontent.com'
+              render={renderProps => (
                 <Button
                   basic
-                  color="black"
+                  color='black'
                   className={styles.button}
-                  type="submit"
+                  type='submit'
                   onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                >
-                  <Icon name="google" /> Continue with Google
+                  disabled={renderProps.disabled}>
+                  <Icon name='google' /> Continue with Google
                 </Button>
               )}
-              buttonText="Login"
+              buttonText='Login'
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
               cookiePolicy={'single_host_origin'}

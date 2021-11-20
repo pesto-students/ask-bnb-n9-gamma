@@ -10,8 +10,16 @@ import {
 
 const API_ENDPOINT = process.env.REACT_APP_API_URL;
 
+// Set loadingto true
+export const setLoading = () => async dispatch => {
+  dispatch({
+    type: SET_LOADING,
+  });
+};
+
 export const addFilters = filters => async dispatch => {
   try {
+    setLoading();
     dispatch({
       type: SET_FILTER,
       payload: filters,
@@ -23,7 +31,6 @@ export const addFilters = filters => async dispatch => {
 
 export const getHotels = location => async dispatch => {
   try {
-    setLoading();
     const res = await axios.get(`${API_ENDPOINT}api/hotel/getHotels`, {
       params: { location, select: '' },
     });
@@ -58,7 +65,6 @@ export const confirmRooms =
 
       const body = { hotel_id, selected_rooms, startDate, endDate };
 
-      console.log(body);
       if (startDate && endDate) {
         const res = await axios.post(
           `${API_ENDPOINT}api/hotel/blockRooms`,
@@ -80,13 +86,6 @@ export const setCurrentRoom = id => async dispatch => {
   } catch (error) {
     showErrorAlert();
   }
-};
-
-// Set loadingto true
-export const setLoading = () => {
-  return {
-    type: SET_LOADING,
-  };
 };
 
 // Set loadingto true

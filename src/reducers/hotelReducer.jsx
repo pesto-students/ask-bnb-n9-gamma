@@ -3,6 +3,7 @@ import {
   GET_ROOM_LIST,
   SET_BLOCKED_ROOMS,
   SET_FILTER,
+  SET_LOADING,
 } from '../actions/types';
 
 const initialState = {
@@ -19,8 +20,10 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_FILTER:
       return { ...state, filter: { ...payload } };
+    case SET_LOADING:
+      return { ...state, loading: true };
     case GET_HOTEL_LIST:
-      return { ...state, hotelList: payload };
+      return { ...state, hotelList: payload, loading: false };
     case GET_ROOM_LIST:
       return {
         ...state,

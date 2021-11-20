@@ -16,3 +16,19 @@
 .status {
   font-size: medium;
 }
+
+.noBookingContainer {
+  display: flex;
+  width: 80%;
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  border: 1px solid grey;
+  border-radius: 2rem;
+  margin: 6rem auto 0rem;
+}
+
+.bottomMargin {
+  margin-bottom: 3rem;
+}

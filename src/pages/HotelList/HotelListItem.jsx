@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 const HotelListItem = prop => {
   const { data, history, setCurrentRoom } = prop;
 
+  const basePrice = data?.room_collection?.standard[0].base_price || 0;
+
   const getRoomType = () => {
     return data?.room_collection?.delux[0].room_type.join(' - ').toString();
   };
@@ -43,9 +45,9 @@ const HotelListItem = prop => {
           </div>
           <div className={styles.priceContainer}>
             <div className={styles.perDayPrice}>
-              Rs. 1000 <span>/ night</span>
+              Rs. {basePrice} <span>/ night</span>
             </div>
-            <div className={styles.totalPrice}>Rs. 4000 total</div>
+            <div className={styles.totalPrice}>Rs. {basePrice} total</div>
           </div>
         </div>
       </div>

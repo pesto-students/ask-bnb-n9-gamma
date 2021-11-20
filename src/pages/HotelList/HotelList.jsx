@@ -3,18 +3,20 @@ import Footer from '../shared/Footer';
 import styles from './HotelList.module.css';
 import HotelListItem from './HotelListItem';
 import { connect } from 'react-redux';
-import { getHotels } from '../../actions/hotelAction';
+import { getHotels, setLoading } from '../../actions/hotelAction';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import NoHotels from './NoHotels';
+import Loader from 'react-cssfx-loading/lib/FillingBottle';
 
 const moment = extendMoment(Moment);
 
 const HotelList = ({
   hotel: { filter, hotelList, loading },
   getHotels,
+  setLoading,
   history,
 }) => {
   const [startDate, setStartDate] = useState(null);
@@ -23,6 +25,7 @@ const HotelList = ({
   const range1 = moment.range(startDate, endDate);
 
   useEffect(() => {
+    setLoading();
     getHotels(filter.location);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -44,6 +47,19 @@ const HotelList = ({
       />
     ));
   };
+
+  if (!filter.location) {
+    history.push('/');
+    return <div> No Data </div>;
+  }
+
+  if (loading) {
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader width='5rem' height='5rem' />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -83,4 +99,4 @@ const mapStateToProp = state => ({
   hotel: state.hotel,
 });
 
-export default connect(mapStateToProp, { getHotels })(HotelList);
+export default connect(mapStateToProp, { getHotels, setLoading })(HotelList);

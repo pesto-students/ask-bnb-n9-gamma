@@ -2,147 +2,51 @@ import Header from '../shared/Header';
 import Footer from '../shared/Footer';
 import styles from './HotelList.module.css';
 import HotelListItem from './HotelListItem';
+import { connect } from 'react-redux';
+import { getHotels } from '../../actions/hotelAction';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
+import NoHotels from './NoHotels';
 
-const HotelList = () => {
-  const hotelList = [
-    {
-      hotelDetail: '1 BHK Service Apartment 1',
-      note: 'Fully furnished apartment in HRS Layout',
-      amnities: [
-        '2 guest',
-        '1 Bed',
-        'Studio',
-        '2 Bathrooms',
-        'WiFi',
-        'Kitchen',
-        'Free Parking',
-      ],
-      reviews: '11',
-      ratings: '4.5',
-      averagePrice: '1000',
-      _id: 1,
-      image:
-        'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
-    },
-    {
-      hotelDetail: '1 BHK Service Apartment 2',
-      note: 'Fully furnished apartment in HRS Layout',
-      amnities: [
-        '2 guest',
-        '1 Bed',
-        'Studio',
-        '2 Bathrooms',
-        'WiFi',
-        'Kitchen',
-        'Free Parking',
-      ],
-      reviews: '11',
-      ratings: '4.5',
-      averagePrice: '1000',
-      _id: 2,
-      image:
-        'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
-    },
-    {
-      hotelDetail: '1 BHK Service Apartment 3',
-      note: 'Fully furnished apartment in HRS Layout',
-      amnities: [
-        '2 guest',
-        '1 Bed',
-        'Studio',
-        '2 Bathrooms',
-        'WiFi',
-        'Kitchen',
-        'Free Parking',
-      ],
-      reviews: '11',
-      ratings: '4.5',
-      averagePrice: '1000',
-      _id: 3,
-      image:
-        'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
-    },
-    {
-      hotelDetail: '1 BHK Service Apartment 4',
-      note: 'Fully furnished apartment in HRS Layout',
-      amnities: [
-        '2 guest',
-        '1 Bed',
-        'Studio',
-        '2 Bathrooms',
-        'WiFi',
-        'Kitchen',
-        'Free Parking',
-      ],
-      reviews: '11',
-      ratings: '4.5',
-      averagePrice: '1000',
-      _id: 4,
-      image:
-        'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
-    },
-    {
-      hotelDetail: '1 BHK Service Apartment 5',
-      note: 'Fully furnished apartment in HRS Layout',
-      amnities: [
-        '2 guest',
-        '1 Bed',
-        'Studio',
-        '2 Bathrooms',
-        'WiFi',
-        'Kitchen',
-        'Free Parking',
-      ],
-      reviews: '11',
-      ratings: '4.5',
-      averagePrice: '1000',
-      _id: 5,
-      image:
-        'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
-    },
-    {
-      hotelDetail: '1 BHK Service Apartment 6',
-      note: 'Fully furnished apartment in HRS Layout',
-      amnities: [
-        '2 guest',
-        '1 Bed',
-        'Studio',
-        '2 Bathrooms',
-        'WiFi',
-        'Kitchen',
-        'Free Parking',
-      ],
-      reviews: '11',
-      ratings: '4.5',
-      averagePrice: '1000',
-      _id: 6,
-      image:
-        'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
-    },
-    {
-      hotelDetail: '1 BHK Service Apartment 7',
-      note: 'Fully furnished apartment in HRS Layout',
-      amnities: [
-        '2 guest',
-        '1 Bed',
-        'Studio',
-        '2 Bathrooms',
-        'WiFi',
-        'Kitchen',
-        'Free Parking',
-      ],
-      reviews: '11',
-      ratings: '4.5',
-      averagePrice: '1000',
-      _id: 7,
-      image:
-        'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=',
-    },
-  ];
+const moment = extendMoment(Moment);
 
+const HotelList = ({
+  hotel: { filter, hotelList, loading },
+  getHotels,
+  history,
+}) => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  // const [range1, setRange1] = useState(null);
+  const range1 = moment.range(startDate, endDate);
+
+  useEffect(() => {
+    getHotels(filter.location);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setStartDate(filter.startDate);
+    setEndDate(filter.endDate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
+
+  // HOF
   const getIndividualItems = () => {
+<<<<<<< HEAD
     return hotelList.map((item) => (
       <HotelListItem styles={styles} data={item} />
+=======
+    return hotelList.map(item => (
+      <HotelListItem
+        key={item._id}
+        styles={styles}
+        data={item}
+        history={history}
+      />
+>>>>>>> 57366a869b3217846bd929566ecb509cf98c1b56
     ));
   };
 
@@ -152,12 +56,27 @@ const HotelList = () => {
         <Header color="#2E2E2E" />
         <div className={styles.listSummary} data-testid="listsummary">
           <div className={styles.filterDetails}>
-            100+ stays | 18th October to 21st October | 2 guests
+            100+ stays | {moment(startDate).format('Do MMMM')} to{' '}
+            {moment(endDate).format('Do MMMM')} | {range1.diff('days')} days |{' '}
+            {filter.guests} guests
           </div>
-          <div className={styles.locationDetails}>Stay in Bangalore</div>
+          <div className={styles.locationDetails}>
+            Stay in{' '}
+            {filter.location.replace(
+              /(^\w{1}|\.\s*\w{1})/gi,
+              function (toReplace) {
+                return toReplace.toUpperCase();
+              }
+            )}
+          </div>
         </div>
+<<<<<<< HEAD
         <div className={styles.hotelListWrapper} data-testid="hotellist">
           {getIndividualItems()}
+=======
+        <div className={styles.hotelListWrapper}>
+          {hotelList.length ? getIndividualItems() : <NoHotels />}
+>>>>>>> 57366a869b3217846bd929566ecb509cf98c1b56
         </div>
       </div>
       <Footer className={styles.footerContainer} />
@@ -165,4 +84,13 @@ const HotelList = () => {
   );
 };
 
-export default HotelList;
+HotelList.propType = {
+  hotel: PropTypes.array.isRequired,
+  getHotels: PropTypes.func.isRequired,
+};
+
+const mapStateToProp = state => ({
+  hotel: state.hotel,
+});
+
+export default connect(mapStateToProp, { getHotels })(HotelList);

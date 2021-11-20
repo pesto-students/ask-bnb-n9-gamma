@@ -12,15 +12,19 @@
     "@types/react-dom": "^17.0.0",
     "axios": "^0.23.0",
     "moment": "^2.29.1",
+<<<<<<< HEAD
+=======
+    "moment-range": "^4.0.2",
+>>>>>>> 57366a869b3217846bd929566ecb509cf98c1b56
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
-    "react-thunk": "^1.0.0",
+    "react-scripts": "^4.0.3",
     "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.4",
     "typescript": "^4.1.2",

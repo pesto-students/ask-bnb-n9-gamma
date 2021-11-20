@@ -1,0 +1,11 @@
+export const REGISTER_USER = 'REGISTER_USER';
+export const GET_USER = 'GET_USER';
+export const SET_USER = 'SET_USER';
+export const SET_FILTER = 'SET_FILTER';
+export const GET_HOTEL_LIST = 'GET_HOTEL_LIST';
+export const SET_BLOCKED_ROOMS = 'SET_BLOCKED_ROOMS';
+export const GET_ROOM_LIST = 'GET_ROOM_LIST';
+export const SET_ROOM_SELECTION = 'SET_ROOM_SELECTION';
+export const SET_LOADING = 'SET_LOADING';
+export const SHOW_ALERT = 'SHOW_ALERT';
+// export const SET_ROOM_SELECTION = 'SET_ROOM_SELECTION';

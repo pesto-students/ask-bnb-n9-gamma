@@ -45,6 +45,7 @@ const Header = () => {
   const isAutenticated = localStorage.getItem('isAuthenticated');
   return (
     <div className={style.headerContainer}>
+      {/* ${!transparent && styles.addColor}`}/> */}
       <div className={style.logoContainer}>
         <img src={logo} alt="logo" /> BnB
       </div>
@@ -57,4 +58,13 @@ const Header = () => {
   );
 };
 
+Header.defaultProps = {
+  transparent: false,
+};
+
+Header.propType = {
+  transparent: PropTypes.bool.isRequired,
+};
+
 export default Header;
+

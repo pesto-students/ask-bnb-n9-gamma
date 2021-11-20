@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { Button, Form, Modal, Icon, Message } from 'semantic-ui-react';
 import styles from './Auth.module.css';
 import axios from 'axios';
@@ -7,7 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 
 const API_ENDPOINT = process.env.REACT_APP_API_URL;
 
-const Auth = (props) => {
+const Auth = props => {
   const [open, setOpen] = useState(true);
   const [hideSignIn, setHideSignIn] = useState(false);
   const [hideSignUp, setHideSignUp] = useState(true);
@@ -150,15 +149,14 @@ const Auth = (props) => {
               className={styles.form}
               hidden={hideSignIn}
               onSubmit={handleLoginSubmit}
-              data-testid="loginform"
-            >
+              data-testid='loginform'>
               <Form.Field className={styles.inputField}>
                 <input
                   value={inputs.email}
                   placeholder='Email'
                   name='email'
                   onChange={handleChange}
-                  data-testid="loginemail"
+                  data-testid='loginemail'
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
@@ -168,16 +166,15 @@ const Auth = (props) => {
                   placeholder='Password'
                   name='password'
                   onChange={handleChange}
-                  data-testid="loginpassword"
+                  data-testid='loginpassword'
                 />
               </Form.Field>
               <Button
                 basic
                 color='black'
                 className={styles.button}
-                type="submit"
-                data-testid="loginsubmit"
-              >
+                type='submit'
+                data-testid='loginsubmit'>
                 Continue
               </Button>
               <span style={{ marginTop: '10px' }}>
@@ -200,7 +197,7 @@ const Auth = (props) => {
                   placeholder='Full Name'
                   name='name'
                   onChange={handleChange}
-                  data-testid="registername"
+                  data-testid='registername'
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
@@ -209,7 +206,7 @@ const Auth = (props) => {
                   placeholder='Email'
                   name='email'
                   onChange={handleChange}
-                  data-testid="registeremail"
+                  data-testid='registeremail'
                 />
               </Form.Field>
               <Form.Field className={styles.inputField}>
@@ -219,16 +216,15 @@ const Auth = (props) => {
                   placeholder='Password'
                   name='password'
                   onChange={handleChange}
-                  data-testid="registerpassword"
+                  data-testid='registerpassword'
                 />
               </Form.Field>
               <Button
                 basic
                 color='black'
                 className={styles.button}
-                type="submit"
-                data-testid="registersubmit"
-              >
+                type='submit'
+                data-testid='registersubmit'>
                 Sign Up Now
               </Button>
               <span style={{ marginTop: '10px' }}>

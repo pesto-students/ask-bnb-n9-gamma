@@ -37,7 +37,7 @@ const Booking = () => {
 
   const calculateTotal = () => {
     let total = 0;
-    booking_details.rooms_selected.forEach((room) => {
+    booking_details.rooms_selected.forEach(room => {
       total +=
         room.price *
         moment(booking_details.check_out).diff(
@@ -141,7 +141,7 @@ const Booking = () => {
   return (
     <>
       <Header />
-      <Container textAlign="left">
+      <Container textAlign='left'>
         <Message success hidden={!showSuccessMessage}>
           {successMessage}
         </Message>
@@ -162,28 +162,28 @@ const Booking = () => {
               <p>{booking_details.guests}</p>
               <Divider />
               <h2>Pay With</h2>
-              <img className={styles.logo} src={visa} alt="visa" />
-              <img className={styles.logo} src={mastercard} alt="mastercard" />
-              <img className={styles.logo} src={upi} alt="upi" />
+              <img className={styles.logo} src={visa} alt='visa' />
+              <img className={styles.logo} src={mastercard} alt='mastercard' />
+              <img className={styles.logo} src={upi} alt='upi' />
               <Divider />
               <h2>Cancellation Policy</h2>
               <br />
               <p>
                 Only the cleaning fee is refundable because check-in is less
                 than 7 days away.
-                <a href="#">
+                <a href='!#'>
                   <strong>Learn More</strong>
                 </a>
               </p>
               <p>
                 Our Extenuating Circumstances policy does not cover travel
                 disruptions caused by COVID-19.
-                <a href="#">
+                <a href='!#'>
                   <strong>Learn More</strong>
                 </a>
               </p>
             </Segment>
-            <Button size="big" color="red" floated="left" onClick={checkout}>
+            <Button size='big' color='red' floated='left' onClick={checkout}>
               Confirm and Pay
             </Button>
           </Grid.Column>
@@ -195,10 +195,10 @@ const Booking = () => {
                     <Grid.Column width={8}>
                       <Image
                         src={booking_details.hotel_thumbnail}
-                        size="medium"
+                        size='medium'
                       />
                     </Grid.Column>
-                    <Grid.Column width={8} textAlign="right">
+                    <Grid.Column width={8} textAlign='right'>
                       <h3>{booking_details.hotel_name}</h3>
                       <h5>{booking_details.city}</h5>
                     </Grid.Column>
@@ -212,7 +212,7 @@ const Booking = () => {
                         <h2>Price Details</h2>
                       </Grid.Column>
                     </Grid.Row>
-                    {booking_details.rooms_selected.map((room) => {
+                    {booking_details.rooms_selected.map(room => {
                       return (
                         <Grid.Row>
                           <Grid.Column width={8}>

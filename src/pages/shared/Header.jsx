@@ -1,20 +1,21 @@
 import { Button, Image, Dropdown } from 'semantic-ui-react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import style from './Header.module.css';
 import logo from './ASK.svg';
+import PropTypes from 'prop-types';
 
-const UserAvatar = (props) => {
+const UserAvatar = props => {
   return (
     <div className={style.avatarContainer}>
       <Image
-        src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+        src='https://react.semantic-ui.com/images/wireframe/square-image.png'
         avatar
       />
       <span>{'Welcome, ' + props.username.split(' ')[0]}</span>
       <Dropdown>
         <Dropdown.Menu>
           <Dropdown.Item>
-            <Link to="/bookinghistory">My Bookings</Link>
+            <Link to='/bookinghistory'>My Bookings</Link>
           </Dropdown.Item>
           <Dropdown.Item>My Account</Dropdown.Item>
           <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
@@ -27,8 +28,8 @@ const UserAvatar = (props) => {
 const AuthButton = () => {
   return (
     <div className={style.buttonContainer}>
-      <Button basic color="black">
-        <Link to="/auth">
+      <Button basic color='black'>
+        <Link to='/auth'>
           <b className={style.authButton}>Login/Sign Up</b>
         </Link>
       </Button>
@@ -47,7 +48,7 @@ const Header = () => {
     <div className={style.headerContainer}>
       {/* ${!transparent && styles.addColor}`}/> */}
       <div className={style.logoContainer}>
-        <img src={logo} alt="logo" /> BnB
+        <img src={logo} alt='logo' /> BnB
       </div>
       {isAutenticated ? (
         <UserAvatar username={localStorage.getItem('username')} />
@@ -67,4 +68,3 @@ Header.propType = {
 };
 
 export default Header;
-

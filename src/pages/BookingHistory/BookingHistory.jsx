@@ -1,11 +1,5 @@
 import { useEffect } from 'react';
-import {
-  Button,
-  Container,
-  Grid,
-  Segment,
-  Header as Heading,
-} from 'semantic-ui-react';
+import { Button, Container, Grid, Segment } from 'semantic-ui-react';
 import Header from '../shared/Header';
 import styles from './BookingHistory.module.css';
 import moment from 'moment';
@@ -19,16 +13,16 @@ const BookingHistory = () => {
       headers: {
         'auth-token': localStorage.getItem('auth-token'),
       },
-    }).then((response) => {
+    }).then(response => {
       console.log(response.data);
     });
   }, []);
   return (
     <>
       <Header></Header>
-      <Container textAlign="left">
+      <Container textAlign='left'>
         <h1>My Bookings</h1>
-        <Segment color="red">
+        <Segment color='red'>
           <Grid>
             <Grid.Row>
               <Grid.Column width={10}>
@@ -38,7 +32,7 @@ const BookingHistory = () => {
                 <span className={styles.cityName}>Bangalore</span>
               </Grid.Column>
               <Grid.Column width={6}>
-                <Button basic color="red" floated="right">
+                <Button basic color='red' floated='right'>
                   Cancel Booking
                 </Button>
               </Grid.Column>

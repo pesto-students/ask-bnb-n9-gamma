@@ -12,10 +12,7 @@
     "@types/react-dom": "^17.0.0",
     "axios": "^0.23.0",
     "moment": "^2.29.1",
-<<<<<<< HEAD
-=======
     "moment-range": "^4.0.2",
->>>>>>> 57366a869b3217846bd929566ecb509cf98c1b56
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",

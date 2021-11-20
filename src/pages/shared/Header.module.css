@@ -2,15 +2,12 @@
   display: block;
   position: relative;
   padding: 2rem;
-<<<<<<< HEAD
   margin-bottom: 30px;
-=======
   height: 6rem;
 }
 
 .addColor {
   background-color: #665f5f;
->>>>>>> 57366a869b3217846bd929566ecb509cf98c1b56
 }
 
 .logoContainer {

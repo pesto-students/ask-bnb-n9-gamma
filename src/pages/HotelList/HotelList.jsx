@@ -35,10 +35,6 @@ const HotelList = ({
 
   // HOF
   const getIndividualItems = () => {
-<<<<<<< HEAD
-    return hotelList.map((item) => (
-      <HotelListItem styles={styles} data={item} />
-=======
     return hotelList.map(item => (
       <HotelListItem
         key={item._id}
@@ -46,7 +42,6 @@ const HotelList = ({
         data={item}
         history={history}
       />
->>>>>>> 57366a869b3217846bd929566ecb509cf98c1b56
     ));
   };
 
@@ -70,13 +65,8 @@ const HotelList = ({
             )}
           </div>
         </div>
-<<<<<<< HEAD
         <div className={styles.hotelListWrapper} data-testid="hotellist">
-          {getIndividualItems()}
-=======
-        <div className={styles.hotelListWrapper}>
           {hotelList.length ? getIndividualItems() : <NoHotels />}
->>>>>>> 57366a869b3217846bd929566ecb509cf98c1b56
         </div>
       </div>
       <Footer className={styles.footerContainer} />

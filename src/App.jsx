@@ -3,7 +3,6 @@ import './App.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import AuthModal from './modals/AuthModal';
 import Auth from './pages/Auth/Auth';
 import Booking from './pages/Booking/Booking';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
@@ -29,7 +28,6 @@ const App = () => {
               path='/bookingHistory'
               component={BookingHistory}
             />
-            <AuthModal />
           </Switch>
         </Router>
       </div>

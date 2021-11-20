@@ -23,7 +23,7 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
   return (
     <>
       <div className={styles.homeContainer}>
-        <Header transparent={true} />
+        <Header transparent={true} history={history} />
         <div className='searchBarContainer'>
           <form className={styles.formWrapper} onSubmit={() => onSubmit()}>
             <div className={styles.formContainer}>
@@ -31,6 +31,7 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                 type='text'
                 placeholder='Where are you going?'
                 value={location}
+                className={styles.inputField}
                 onChange={e => setLocation(e.target.value)}
                 data-testid='location'
                 required
@@ -40,6 +41,7 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                 type='date'
                 name='startDate'
                 value={startDate}
+                className={styles.inputField}
                 min={new Date().toISOString().slice(0, -14)}
                 max={new Date(new Date().setDate(new Date().getDate() + 14))
                   .toISOString()
@@ -54,6 +56,7 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                 name='endDate'
                 value={endDate}
                 min={startDate}
+                className={styles.inputField}
                 max={new Date(new Date().setDate(new Date().getDate() + 14))
                   .toISOString()
                   .slice(0, -14)}
@@ -66,11 +69,12 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                 type='number'
                 name='guests'
                 value={guests}
+                className={styles.inputField}
                 onChange={e => setGuests(e.target.value)}
                 data-testid='guests'
                 required
               />
-              <button type='submit'>
+              <button type='submit' className={styles.submitButton}>
                 <FaSearch
                   color='grey'
                   className={styles.searchIcon}

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Grid,
   Segment,
@@ -17,22 +16,29 @@ import mastercard from './images/mastercard.png';
 import moment from 'moment';
 import axios from 'axios';
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import { confirmRooms } from '../../actions/hotelAction';
 
-const Booking = () => {
+const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
+  console.log(current, blockedRooms, filter);
+  const { hotel_name, city, indexImage, _id } = current;
+  const { hotel_id, startDate, endDate, selected_rooms } = blockedRooms;
+  const { guests } = filter;
+
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const booking_details = {
-    hotel_id: '1',
-    hotel_name: 'Hotel Paradise',
-    city: 'Banglore',
-    hotel_thumbnail: 'https://react.semantic-ui.com/images/wireframe/image.png',
-    check_in: '2021-11-18',
-    check_out: '2021-11-21',
-    guests: '2',
-    rooms_selected: [{ type: 'standard', room_id: '103', price: 1500 }],
+    hotel_id,
+    hotel_name,
+    city,
+    hotel_thumbnail: indexImage,
+    check_in: startDate,
+    check_out: endDate,
+    guests,
+    rooms_selected: selected_rooms,
   };
 
   const calculateTotal = () => {
@@ -55,6 +61,9 @@ const Booking = () => {
       url: 'http://localhost:9000/api/booking/newbooking',
       data: {
         hotel_id: booking_details.hotel_id,
+        hotel_name: booking_details.hotel_name,
+        city: booking_details.city,
+        guests: booking_details.guests,
         check_in: booking_details.check_in,
         check_out: booking_details.check_out,
         rooms_booked: booking_details.rooms_selected,
@@ -119,8 +128,12 @@ const Booking = () => {
           setErrorMessage(payload.message);
           setShowErrorMessage(true);
         } else {
+          confirmRooms(hotel_id, selected_rooms, startDate, endDate);
           setSuccessMessage(payload.message);
           setShowSuccessMessage(true);
+          setTimeout(() => {
+            history.push('/bookingHistory');
+          }, 2000);
         }
       },
       theme: {
@@ -140,7 +153,7 @@ const Booking = () => {
 
   return (
     <>
-      <Header />
+      <Header history={history} />
       <Container textAlign='left'>
         <Message success hidden={!showSuccessMessage}>
           {successMessage}
@@ -183,8 +196,21 @@ const Booking = () => {
                 </a>
               </p>
             </Segment>
-            <Button size='big' color='red' floated='left' onClick={checkout}>
+            <Button
+              size='big'
+              color='green'
+              // basic
+              floated='left'
+              onClick={checkout}>
               Confirm and Pay
+            </Button>
+            <Button
+              size='big'
+              color='red'
+              basic
+              floated='left'
+              onClick={() => history.push(`hotel/${_id}`)}>
+              Cancel
             </Button>
           </Grid.Column>
           <Grid.Column width={6}>
@@ -257,4 +283,10 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+const mapStateToProp = state => ({
+  current: state.hotel.current,
+  blockedRooms: state.hotel.blockedRooms,
+  filter: state.hotel.filter,
+});
+
+export default connect(mapStateToProp, { confirmRooms })(Booking);

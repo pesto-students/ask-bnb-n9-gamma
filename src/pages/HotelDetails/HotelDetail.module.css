@@ -4,6 +4,20 @@
   padding: 0 8rem;
 }
 
+.hotelName {
+  /* display: inline; */
+  color: #000000cd;
+  margin-bottom: 2rem;
+}
+
+.hotelName h4,
+.hotelName h1 {
+  /* color: #000000cd; */
+  margin: 0;
+  display: inline !important;
+  margin-bottom: 2rem;
+}
+
 .imageContainer {
   /* padding: 12rem; */
   /* background-color: #777474; */
@@ -99,9 +113,6 @@
 
 .roomImage {
   max-height: 10rem;
-}
-
-.amenitiesColumn {
 }
 
 ul {

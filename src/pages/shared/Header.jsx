@@ -8,6 +8,7 @@ const UserAvatar = props => {
   return (
     <div className={style.avatarContainer}>
       <Image
+        className={style.avatarImage}
         src='https://react.semantic-ui.com/images/wireframe/square-image.png'
         avatar
       />
@@ -42,12 +43,11 @@ const logout = () => {
   window.location.href = '/';
 };
 
-const Header = () => {
+const Header = ({ history }) => {
   const isAutenticated = localStorage.getItem('isAuthenticated');
   return (
     <div className={style.headerContainer}>
-      {/* ${!transparent && styles.addColor}`}/> */}
-      <div className={style.logoContainer}>
+      <div onClick={() => history.push('/')} className={style.logoContainer}>
         <img src={logo} alt='logo' /> BnB
       </div>
       {isAutenticated ? (

@@ -29,7 +29,7 @@ export default (state = initialState, { type, payload }) => {
     case SET_BLOCKED_ROOMS:
       return {
         ...state,
-        current: payload,
+        blockedRooms: payload,
       };
 
     default:

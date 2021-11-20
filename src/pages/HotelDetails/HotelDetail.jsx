@@ -36,8 +36,8 @@ const HotelDetail = ({
   }, [minRoom]);
 
   const bookNewRooms = () => {
+    history.push('/booking');
     blockRooms(hotel_id, roomsSelected.slice(0, roomCount), startDate, endDate);
-    // history.push('')
   };
 
   const getMinRoomAvailed = () => {
@@ -123,8 +123,8 @@ const HotelDetail = ({
 
   const getImageGrid = () => (
     <>
-      {currentHotel.images.slice(0, 4).map(item => {
-        if (item) return <img src={item} alt='' />;
+      {currentHotel.images.slice(0, 4).map((item, index) => {
+        if (item) return <img key={index} src={item} alt='' />;
         else return null;
       })}
     </>
@@ -132,8 +132,8 @@ const HotelDetail = ({
 
   const getAmenityList = array => (
     <ul>
-      {array.room_type.map(item => (
-        <li>{item}</li>
+      {array.room_type.map((item, index) => (
+        <li key={index}>{item}</li>
       ))}
     </ul>
   );
@@ -185,9 +185,12 @@ const HotelDetail = ({
   return (
     <>
       <div>
-        <Header color='#2E2E2E' />
+        <Header color='#2E2E2E' history={history} />
       </div>
       <div className={styles.detailWrapper}>
+        <div className={styles.hotelName}>
+          <h1>{currentHotel.hotel_name}</h1>, <h4>{currentHotel.city}</h4>
+        </div>
         <div className={styles.imageContainer}>
           <div className={styles.mainImageContainer}>
             <img src={currentHotel.indexImage} alt='' />

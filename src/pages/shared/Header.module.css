@@ -2,7 +2,7 @@
   display: block;
   position: relative;
   padding: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 1rem;
   height: 6rem;
 }
 
@@ -17,7 +17,8 @@
   align-items: center;
   justify-content: center;
   font-size: calc(5vh - 20%);
-  color: #ffffff;
+  color: #000000;
+  cursor: pointer;
 }
 
 .logoContainer > img {
@@ -33,6 +34,10 @@
   display: inline-block;
   position: absolute;
   right: 10rem;
+}
+
+.avatarImage {
+  margin-right: 0.5rem !important;
 }
 
 .buttonPadding {

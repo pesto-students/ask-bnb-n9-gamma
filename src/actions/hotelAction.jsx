@@ -42,6 +42,20 @@ export const blockRooms =
     try {
       setLoading();
 
+      dispatch({
+        type: SET_BLOCKED_ROOMS,
+        payload: { hotel_id, selected_rooms, startDate, endDate },
+      });
+    } catch (error) {
+      showErrorAlert();
+    }
+  };
+
+export const confirmRooms =
+  (hotel_id, selected_rooms, startDate, endDate) => async dispatch => {
+    try {
+      setLoading();
+
       const body = { hotel_id, selected_rooms, startDate, endDate };
 
       console.log(body);
@@ -52,13 +66,8 @@ export const blockRooms =
         );
         console.log(res.data.data);
       }
-
-      dispatch({
-        type: SET_BLOCKED_ROOMS,
-        payload: { hotel_id, selected_rooms, startDate, endDate },
-      });
     } catch (error) {
-      showErrorAlert();
+      // showErrorAlert();
     }
   };
 

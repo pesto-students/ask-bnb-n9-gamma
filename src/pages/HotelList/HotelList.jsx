@@ -48,8 +48,8 @@ const HotelList = ({
   return (
     <>
       <div>
-        <Header color='#2E2E2E' />
-        <div className={styles.listSummary}>
+        <Header color="#2E2E2E" />
+        <div className={styles.listSummary} data-testid="listsummary">
           <div className={styles.filterDetails}>
             100+ stays | {moment(startDate).format('Do MMMM')} to{' '}
             {moment(endDate).format('Do MMMM')} | {range1.diff('days')} days |{' '}
@@ -65,7 +65,7 @@ const HotelList = ({
             )}
           </div>
         </div>
-        <div className={styles.hotelListWrapper}>
+        <div className={styles.hotelListWrapper} data-testid="hotellist">
           {hotelList.length ? getIndividualItems() : <NoHotels />}
         </div>
       </div>

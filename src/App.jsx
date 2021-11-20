@@ -6,6 +6,9 @@ import HotelDetail from './pages/HotelDetails/HotelDetail';
 import { Provider } from 'react-redux';
 import store from './store';
 import Auth from './pages/Auth/Auth';
+import Booking from './pages/Booking/Booking';
+import BookingHistory from './pages/BookingHistory/BookingHistory';
+import ProtectedRoute from './pages/shared/ProtectedRoute';
 
 const App = () => {
   return (
@@ -17,6 +20,12 @@ const App = () => {
             <Route exact path='/list' component={HotelList} />
             <Route exact path='/hotel/:hotelId' component={HotelDetail} />
             <Route exact path="/auth" component={Auth} />
+            <ProtectedRoute exact path="/booking" component={Booking} />
+          <ProtectedRoute
+            exact
+            path="/bookingHistory"
+            component={BookingHistory}
+          />
           </Switch>
         </Router>
       </div>

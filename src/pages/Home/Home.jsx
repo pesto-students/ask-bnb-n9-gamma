@@ -32,6 +32,7 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                 placeholder='Where are you going?'
                 value={location}
                 onChange={e => setLocation(e.target.value)}
+                data-testid="location"
                 required
               />
               <div className={styles.vl}></div>
@@ -44,6 +45,7 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                   .toISOString()
                   .slice(0, -14)}
                 onChange={e => setStartDate(e.target.value)}
+                data-testid="checkin"
                 required
               />
               <div className={styles.vl}></div>
@@ -56,6 +58,7 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                   .toISOString()
                   .slice(0, -14)}
                 onChange={e => setEndDate(e.target.value)}
+                data-testid="checkout"
                 required
               />
               <div className={styles.vl}></div>
@@ -64,10 +67,11 @@ const Home = ({ history, addFilters, hotel: { filter } }) => {
                 name='guests'
                 value={guests}
                 onChange={e => setGuests(e.target.value)}
+                data-testid="guests"
                 required
               />
               <button type='submit'>
-                <FaSearch color='grey' className={styles.searchIcon} />
+                <FaSearch color='grey' className={styles.searchIcon} data-testid="searchbutton"/>
               </button>
             </div>
           </form>

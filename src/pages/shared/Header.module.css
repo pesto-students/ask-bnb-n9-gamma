@@ -2,6 +2,7 @@
   display: block;
   position: relative;
   padding: 2rem;
+  margin-bottom: 30px;
   height: 6rem;
 }
 
@@ -23,7 +24,12 @@
   margin-right: 5px;
 }
 
-.buttonContainer {
+.authButton {
+  color: black;
+}
+
+.buttonContainer,
+.avatarContainer {
   display: inline-block;
   position: absolute;
   right: 10rem;

@@ -5,11 +5,15 @@ import styles from './BookingHistory.module.css';
 import moment from 'moment';
 import axios from 'axios';
 import Footer from '../shared/Footer';
+import { connect } from 'react-redux';
+import Loader from 'react-cssfx-loading/lib/FillingBottle';
 
 const BookingHistory = ({ history }) => {
   const [bookingHistory, setBookingHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios({
       method: 'GET',
       url: 'http://localhost:9000/api/booking/bookinghistory',
@@ -18,6 +22,7 @@ const BookingHistory = ({ history }) => {
       },
     }).then(response => {
       console.log(response.data.data);
+      setLoading(false);
       setBookingHistory(response.data.data);
     });
   }, []);
@@ -25,6 +30,14 @@ const BookingHistory = ({ history }) => {
   const NoBooking = () => (
     <div className={styles.noBookingContainer}>No Booking yet</div>
   );
+
+  if (loading) {
+    return (
+      <div className='loaderContainer'>
+        <Loader width='5rem' height='5rem' />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -95,4 +108,8 @@ const BookingHistory = ({ history }) => {
   );
 };
 
-export default BookingHistory;
+const mapStateToProp = state => ({
+  loading: state.hotel.loading,
+});
+
+export default connect(mapStateToProp, {})(BookingHistory);

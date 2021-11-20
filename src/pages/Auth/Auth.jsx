@@ -7,7 +7,8 @@ import { GoogleLogin } from 'react-google-login';
 const API_ENDPOINT = process.env.REACT_APP_API_URL;
 
 const Auth = props => {
-  const [open, setOpen] = useState(true);
+  // const {} = props
+  const [open, setOpen] = useState(props.showModal);
   const [hideSignIn, setHideSignIn] = useState(false);
   const [hideSignUp, setHideSignUp] = useState(true);
   const [formHeader, setFormHeader] = useState('Sign In');

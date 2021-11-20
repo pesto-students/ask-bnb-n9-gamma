@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import style from './Header.module.css';
 import logo from './ASK.svg';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { showAuthModal } from '../../actions/hotelAction';
 
-const Header = ({ history }) => {
+const Header = ({ history, showAuthModal }) => {
   const isAutenticated = localStorage.getItem('isAuthenticated');
 
   const UserAvatar = props => {
@@ -19,9 +21,12 @@ const Header = ({ history }) => {
         <Dropdown>
           <Dropdown.Menu>
             <Dropdown.Item>
+              <Link to='/'>Home</Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
               <Link to='/bookinghistory'>My Bookings</Link>
             </Dropdown.Item>
-            <Dropdown.Item>My Account</Dropdown.Item>
+            <Dropdown.Item>My Account (FS)</Dropdown.Item>
             <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -32,10 +37,10 @@ const Header = ({ history }) => {
   const AuthButton = () => {
     return (
       <div className={style.buttonContainer}>
-        <Button basic color='black'>
-          <Link to='/auth'>
-            <b className={style.authButton}>Login/Sign Up</b>
-          </Link>
+        <Button basic color='black' onClick={() => showAuthModal()}>
+          {/* <Link to=''> */}
+          <b className={style.authButton}>Login/Sign Up</b>
+          {/* </Link> */}
         </Button>
       </div>
     );
@@ -78,4 +83,4 @@ Header.propType = {
   transparent: PropTypes.bool.isRequired,
 };
 
-export default Header;
+export default connect(null, { showAuthModal })(Header);

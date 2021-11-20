@@ -8,4 +8,5 @@ export const GET_ROOM_LIST = 'GET_ROOM_LIST';
 export const SET_ROOM_SELECTION = 'SET_ROOM_SELECTION';
 export const SET_LOADING = 'SET_LOADING';
 export const SHOW_ALERT = 'SHOW_ALERT';
+export const SHOW_AUTH_MODAL = 'SHOW_AUTH_MODAL';
 // export const SET_ROOM_SELECTION = 'SET_ROOM_SELECTION';

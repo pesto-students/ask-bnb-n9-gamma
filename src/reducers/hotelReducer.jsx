@@ -4,6 +4,7 @@ import {
   SET_BLOCKED_ROOMS,
   SET_FILTER,
   SET_LOADING,
+  SHOW_AUTH_MODAL,
 } from '../actions/types';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   current: {},
   loading: false,
   blockedRooms: {},
+  showModal: false,
   error: null,
 };
 
@@ -24,6 +26,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, loading: true };
     case GET_HOTEL_LIST:
       return { ...state, hotelList: payload, loading: false };
+    case SHOW_AUTH_MODAL:
+      return { ...state, showModal: true };
     case GET_ROOM_LIST:
       return {
         ...state,

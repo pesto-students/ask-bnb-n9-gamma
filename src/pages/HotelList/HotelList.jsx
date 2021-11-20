@@ -58,7 +58,7 @@ const HotelList = ({
 
   if (loading) {
     return (
-      <div className={styles.loaderContainer}>
+      <div className='loaderContainer'>
         <Loader width='5rem' height='5rem' />
       </div>
     );

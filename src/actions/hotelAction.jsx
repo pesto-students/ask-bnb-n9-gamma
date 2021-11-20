@@ -6,6 +6,7 @@ import {
   SET_FILTER,
   SET_LOADING,
   SHOW_ALERT,
+  SHOW_AUTH_MODAL,
 } from './types';
 
 const API_ENDPOINT = process.env.REACT_APP_API_URL;
@@ -86,6 +87,12 @@ export const setCurrentRoom = id => async dispatch => {
   } catch (error) {
     showErrorAlert();
   }
+};
+
+export const showAuthModal = () => async dispatch => {
+  dispatch({
+    type: SHOW_AUTH_MODAL,
+  });
 };
 
 // Set loadingto true

@@ -11,21 +11,25 @@ import BookingHistory from './pages/BookingHistory/BookingHistory';
 import ProtectedRoute from './pages/shared/ProtectedRoute';
 
 const App = () => {
+  const {
+    hotel: { showModal },
+  } = store.getState();
+  console.log(showModal);
   return (
     <Provider store={store}>
       <div className='App'>
+        <Auth showModal={showModal} />
         <Router>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/list' component={HotelList} />
             <Route exact path='/hotel/:hotelId' component={HotelDetail} />
-            <Route exact path="/auth" component={Auth} />
-            <ProtectedRoute exact path="/booking" component={Booking} />
-          <ProtectedRoute
-            exact
-            path="/bookingHistory"
-            component={BookingHistory}
-          />
+            <ProtectedRoute exact path='/booking' component={Booking} />
+            <ProtectedRoute
+              exact
+              path='/bookingHistory'
+              component={BookingHistory}
+            />
           </Switch>
         </Router>
       </div>

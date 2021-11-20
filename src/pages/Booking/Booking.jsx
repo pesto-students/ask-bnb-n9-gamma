@@ -1,23 +1,24 @@
-import {
-  Grid,
-  Segment,
-  Sticky,
-  Divider,
-  Button,
-  Container,
-  Image,
-  Message,
-} from 'semantic-ui-react';
-import Header from '../shared/Header';
-import styles from './Booking.module.css';
-import visa from './images/visa.png';
-import upi from './images/upi.png';
-import mastercard from './images/mastercard.png';
-import moment from 'moment';
 import axios from 'axios';
+import moment from 'moment';
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Image,
+  Message,
+  Segment,
+  Sticky,
+} from 'semantic-ui-react';
+
 import { confirmRooms } from '../../actions/hotelAction';
+import Header from '../shared/Header';
+import styles from './Booking.module.css';
+import mastercard from './images/mastercard.png';
+import upi from './images/upi.png';
+import visa from './images/visa.png';
 
 const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
   console.log(current, blockedRooms, filter);

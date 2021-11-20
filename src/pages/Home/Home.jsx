@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { connect } from 'react-redux';
+import { Grid, Segment } from 'semantic-ui-react';
+
 import { addFilters } from '../../actions/hotelAction';
-import PropTypes from 'prop-types';
 import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 import styles from './Home.module.css';
-import { Grid, Segment } from 'semantic-ui-react';
 
 const Home = ({ history, addFilters, hotel: { filter } }) => {
   const [location, setLocation] = useState(filter?.location || '');

@@ -36,8 +36,25 @@
   right: 10rem;
   height: 100%;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100%;
+}
+
+@media only screen and (max-width: 960px) {
+  .buttonContainer,
+  .avatarContainer {
+    right: 3rem;
+  }
+  .ui.grid {
+    margin-right: 0;
+  }
+  .ui.grid > .row > .column {
+    padding: 0 0rem;
+  }
+
+  .headerContainer {
+    padding: 2rem 0;
+  }
 }
 
 .avatarImage {

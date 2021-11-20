@@ -1,16 +1,17 @@
-import Header from '../shared/Header';
-import Footer from '../shared/Footer';
-import styles from './HotelList.module.css';
-import HotelListItem from './HotelListItem';
-import { connect } from 'react-redux';
-import { getHotels, setLoading } from '../../actions/hotelAction';
-import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-import NoHotels from './NoHotels';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import Loader from 'react-cssfx-loading/lib/FillingBottle';
+import { connect } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
+
+import { getHotels, setLoading } from '../../actions/hotelAction';
+import Footer from '../shared/Footer';
+import Header from '../shared/Header';
+import styles from './HotelList.module.css';
+import HotelListItem from './HotelListItem';
+import NoHotels from './NoHotels';
 
 const moment = extendMoment(Moment);
 

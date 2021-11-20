@@ -1,9 +1,10 @@
-import { Button } from 'semantic-ui-react';
-import { FaStar } from 'react-icons/fa';
-import styles from './HotelList.module.css';
-import { connect } from 'react-redux';
-import { setCurrentRoom } from '../../actions/hotelAction';
 import PropTypes from 'prop-types';
+import { FaStar } from 'react-icons/fa';
+import { connect } from 'react-redux';
+import { Button } from 'semantic-ui-react';
+
+import { setCurrentRoom } from '../../actions/hotelAction';
+import styles from './HotelList.module.css';
 
 const HotelListItem = prop => {
   const { data, history, setCurrentRoom } = prop;

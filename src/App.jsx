@@ -1,27 +1,26 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import HotelList from './pages/HotelList/HotelList';
-import HotelDetail from './pages/HotelDetails/HotelDetail';
+
 import { Provider } from 'react-redux';
-import store from './store';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import AuthModal from './modals/AuthModal';
 import Auth from './pages/Auth/Auth';
 import Booking from './pages/Booking/Booking';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
+import Home from './pages/Home/Home';
+import HotelDetail from './pages/HotelDetails/HotelDetail';
+import HotelList from './pages/HotelList/HotelList';
 import ProtectedRoute from './pages/shared/ProtectedRoute';
+import store from './store';
 
 const App = () => {
-  const {
-    hotel: { showModal },
-  } = store.getState();
-  console.log(showModal);
   return (
     <Provider store={store}>
       <div className='App'>
-        <Auth showModal={showModal} />
         <Router>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/auth' component={Auth} />
             <Route exact path='/list' component={HotelList} />
             <Route exact path='/hotel/:hotelId' component={HotelDetail} />
             <ProtectedRoute exact path='/booking' component={Booking} />
@@ -30,6 +29,7 @@ const App = () => {
               path='/bookingHistory'
               component={BookingHistory}
             />
+            <AuthModal />
           </Switch>
         </Router>
       </div>

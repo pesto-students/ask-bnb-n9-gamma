@@ -1,10 +1,11 @@
-import { Button, Image, Dropdown, Grid } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import style from './Header.module.css';
-import logo from './ASK.svg';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Button, Dropdown, Grid, Image } from 'semantic-ui-react';
+
 import { showAuthModal } from '../../actions/hotelAction';
+import logo from './ASK.svg';
+import style from './Header.module.css';
 
 const Header = ({ history, showAuthModal }) => {
   const isAutenticated = localStorage.getItem('isAuthenticated');
@@ -37,10 +38,10 @@ const Header = ({ history, showAuthModal }) => {
   const AuthButton = () => {
     return (
       <div className={style.buttonContainer}>
-        <Button basic color='black' onClick={() => showAuthModal()}>
-          {/* <Link to=''> */}
-          <b className={style.authButton}>Login/Sign Up</b>
-          {/* </Link> */}
+        <Button basic color='black'>
+          <Link to='/auth'>
+            <b className={style.authButton}>Login/Sign Up</b>
+          </Link>
         </Button>
       </div>
     );

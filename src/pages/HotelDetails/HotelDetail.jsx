@@ -1,14 +1,15 @@
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { FaPlus, FaRegTrashAlt } from 'react-icons/fa';
+import { connect } from 'react-redux';
 import { Button, Grid } from 'semantic-ui-react';
+
+import { blockRooms } from '../../actions/hotelAction';
 import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 import styles from './HotelDetail.module.css';
-import { connect } from 'react-redux';
-import { blockRooms } from '../../actions/hotelAction';
-import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import Moment from 'moment';
-import { extendMoment } from 'moment-range';
 
 const moment = extendMoment(Moment);
 

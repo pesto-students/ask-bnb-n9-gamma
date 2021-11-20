@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Button, Form, Modal, Icon } from 'semantic-ui-react';
+import { Button, Form, Modal, Icon, Message } from 'semantic-ui-react';
 import styles from './Auth.module.css';
 import axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
@@ -12,6 +12,10 @@ const Auth = (props) => {
   const [hideSignUp, setHideSignUp] = useState(true);
   const [formHeader, setFormHeader] = useState('Sign In');
   const [inputs, setInputs] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   // Show Login Form & hide Register Form
   const showLoginForm = () => {
@@ -52,13 +56,23 @@ const Auth = (props) => {
 
     // Extract the data from the response object
     const payload = response.data;
-    localStorage.setItem('auth-token', payload.data.token);
-    localStorage.setItem('username', payload.data.name);
-    localStorage.setItem('isAuthenticated', true);
     console.log(payload);
-    //history.goBack();
-    console.log(props.location.state.referrer);
-    window.location.href = props.location.state.referrer;
+
+    // If error, show error message;else set authentication flags,
+    // show success message and redirect to referrer or home
+    if (payload.code === 400) {
+      setErrorMessage(payload.message);
+      setShowErrorMessage(true);
+    } else {
+      localStorage.setItem('auth-token', payload.data.token);
+      localStorage.setItem('username', payload.data.name);
+      localStorage.setItem('isAuthenticated', true);
+      setSuccessMessage(payload.message);
+      setShowSuccessMessage(true);
+      if (props.location.state !== undefined)
+        window.location.href = props.location.state.referrer;
+      else window.location.href = '/';
+    }
   };
 
   // Handles onSubmit event of Register form
@@ -81,6 +95,16 @@ const Auth = (props) => {
     // Extract the data from the response object
     const payload = response.data;
     console.log(payload);
+
+    // If error, show error message;else
+    // show success message
+    if (payload.code === 400) {
+      setErrorMessage(payload.message);
+      setShowErrorMessage(true);
+    } else {
+      setSuccessMessage(payload.message);
+      setShowSuccessMessage(true);
+    }
   };
 
   // Handles Google login onSuccess
@@ -92,13 +116,22 @@ const Auth = (props) => {
       data: { tokenId: response.tokenId },
     }).then((response) => {
       const payload = response.data;
-      localStorage.setItem('auth-token', payload.data.token);
-      localStorage.setItem('username', payload.data.name);
-      localStorage.setItem('isAuthenticated', true);
       console.log(payload);
-      //history.goBack();
-      console.log(props.location.state.referrer);
-      window.location.href = props.location.state.referrer;
+      // If error, show error message;else set authentication flags,
+      // show success message and redirect to referrer or home
+      if (payload.code === 400) {
+        setErrorMessage(payload.message);
+        setShowErrorMessage(true);
+      } else {
+        localStorage.setItem('auth-token', payload.data.token);
+        localStorage.setItem('username', payload.data.name);
+        localStorage.setItem('isAuthenticated', true);
+        setSuccessMessage(payload.message);
+        setShowSuccessMessage(true);
+        if (props.location.referrer !== undefined)
+          window.location.href = props.location.state.referrer;
+        else window.location.href = '/';
+      }
     });
   };
 
@@ -206,6 +239,12 @@ const Auth = (props) => {
                 </span>
               </span>
             </Form>
+            <Message success hidden={!showSuccessMessage}>
+              {successMessage}
+            </Message>
+            <Message error hidden={!showErrorMessage}>
+              {errorMessage}
+            </Message>
             <div className={styles.or}>OR</div>
             <GoogleLogin
               clientId="62568579646-22dpn8tc7i77jg2c0mmtestk55nm1naj.apps.googleusercontent.com"

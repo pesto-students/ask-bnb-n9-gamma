@@ -13,7 +13,9 @@ const UserAvatar = (props) => {
       <span>{'Welcome, ' + props.username.split(' ')[0]}</span>
       <Dropdown>
         <Dropdown.Menu>
-          <Dropdown.Item>My Bookings</Dropdown.Item>
+          <Dropdown.Item>
+            <Link to="/bookinghistory">My Bookings</Link>
+          </Dropdown.Item>
           <Dropdown.Item>My Account</Dropdown.Item>
           <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
         </Dropdown.Menu>
@@ -36,7 +38,7 @@ const AuthButton = () => {
 
 const logout = () => {
   localStorage.clear();
-  <Redirect to="/" />;
+  window.location.href = '/';
 };
 
 const Header = () => {

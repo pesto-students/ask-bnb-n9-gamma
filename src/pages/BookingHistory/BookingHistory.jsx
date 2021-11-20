@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Button,
   Container,
@@ -8,8 +9,20 @@ import {
 import Header from '../shared/Header';
 import styles from './BookingHistory.module.css';
 import moment from 'moment';
+import axios from 'axios';
 
 const BookingHistory = () => {
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: 'http://localhost:9000/api/booking/bookinghistory',
+      headers: {
+        'auth-token': localStorage.getItem('auth-token'),
+      },
+    }).then((response) => {
+      console.log(response.data);
+    });
+  }, []);
   return (
     <>
       <Header></Header>

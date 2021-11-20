@@ -1,5 +1,5 @@
 import { FaPlus, FaRegTrashAlt } from 'react-icons/fa';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
 import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 import styles from './HotelDetail.module.css';
@@ -145,40 +145,48 @@ const HotelDetail = ({
       <div
         className={`${styles.roomCustomizationContainer}
           ${styles[`${room_type}`]}`}>
-        <div className={styles.leftContainer}>
-          <img src={data.images[0]} alt='' className={styles.roomImage} />
-          <div className={styles.amenitiesColumn}>
-            {getAmenityList(room_data)}
-          </div>
-        </div>
-        <div className={styles.rightContainer}>
-          {getRoomDetails(room_data)}
-          <div className={styles.verticalLine}></div>
-          <div className={styles.priceWrapper}>
-            <div className={styles.priceContainer}>
-              <div className={styles.totalPrice}>
-                Rs. {room_data.base_price}
+        <Grid stackable>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <div className={styles.leftContainer}>
+                <img src={data.images[0]} alt='' className={styles.roomImage} />
+                <div className={styles.amenitiesColumn}>
+                  {getAmenityList(room_data)}
+                </div>
               </div>
-              <div className={styles.priceDescription}>
-                for maximum {room_data.room_type[0]}
-                s, 1 night
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <div className={styles.rightContainer}>
+                {getRoomDetails(room_data)}
+                <div className={styles.verticalLine}></div>
+                <div className={styles.priceWrapper}>
+                  <div className={styles.priceContainer}>
+                    <div className={styles.totalPrice}>
+                      Rs. {room_data.base_price}
+                    </div>
+                    <div className={styles.priceDescription}>
+                      for maximum {room_data.room_type[0]}
+                      s, 1 night
+                    </div>
+                  </div>
+                  <div className={styles.flexBox}>
+                    {/* <Link to='/'> */}
+                    <Button
+                      color='yellow'
+                      className={styles.bookButton}
+                      onClick={() => bookNewRooms()}>
+                      Book (Rs. {room_data.base_price * nights * roomCount})
+                    </Button>
+                    {/* </Link> */}
+                    <div className={styles.priceDescription}>
+                      for {roomCount} room(s), {nights} night
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className={styles.flexBox}>
-              {/* <Link to='/'> */}
-              <Button
-                color='yellow'
-                className={styles.bookButton}
-                onClick={() => bookNewRooms()}>
-                Book (Rs. {room_data.base_price * nights * roomCount})
-              </Button>
-              {/* </Link> */}
-              <div className={styles.priceDescription}>
-                for {roomCount} room(s), {nights} night
-              </div>
-            </div>
-          </div>
-        </div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     );
   };

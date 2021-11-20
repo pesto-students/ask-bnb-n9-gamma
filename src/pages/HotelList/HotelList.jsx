@@ -10,6 +10,7 @@ import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import NoHotels from './NoHotels';
 import Loader from 'react-cssfx-loading/lib/FillingBottle';
+import { Grid } from 'semantic-ui-react';
 
 const moment = extendMoment(Moment);
 
@@ -39,12 +40,14 @@ const HotelList = ({
   // HOF
   const getIndividualItems = () => {
     return hotelList.map(item => (
-      <HotelListItem
-        key={item._id}
-        styles={styles}
-        data={item}
-        history={history}
-      />
+      <Grid.Column width={16}>
+        <HotelListItem
+          key={item._id}
+          styles={styles}
+          data={item}
+          history={history}
+        />
+      </Grid.Column>
     ));
   };
 
@@ -82,7 +85,11 @@ const HotelList = ({
           </div>
         </div>
         <div className={styles.hotelListWrapper} data-testid='hotellist'>
-          {hotelList.length ? getIndividualItems() : <NoHotels />}
+          {hotelList.length ? (
+            <Grid>{getIndividualItems()}</Grid>
+          ) : (
+            <NoHotels />
+          )}
         </div>
       </div>
       <Footer className={styles.footerContainer} />

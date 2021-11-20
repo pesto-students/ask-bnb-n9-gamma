@@ -1,4 +1,4 @@
-import { Button, Image, Dropdown } from 'semantic-ui-react';
+import { Button, Image, Dropdown, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import style from './Header.module.css';
 import logo from './ASK.svg';
@@ -45,17 +45,28 @@ const Header = ({ history }) => {
     localStorage.clear();
     history.push('/');
   };
+
   return (
-    <div className={style.headerContainer}>
-      <div onClick={() => history.push('/')} className={style.logoContainer}>
-        <img src={logo} alt='logo' /> BnB
-      </div>
-      {isAutenticated ? (
-        <UserAvatar username={localStorage.getItem('username')} />
-      ) : (
-        <AuthButton />
-      )}
-    </div>
+    <Grid>
+      <Grid.Row>
+        <Grid.Column width={8}>
+          <div className={style.headerContainer}>
+            <div
+              onClick={() => history.push('/')}
+              className={style.logoContainer}>
+              <img src={logo} alt='logo' /> BnB
+            </div>
+          </div>
+        </Grid.Column>
+        <Grid.Column width={8}>
+          {isAutenticated ? (
+            <UserAvatar username={localStorage.getItem('username')} />
+          ) : (
+            <AuthButton />
+          )}
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 };
 

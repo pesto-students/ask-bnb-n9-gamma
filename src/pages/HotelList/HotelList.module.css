@@ -16,6 +16,29 @@
   margin: 0 22rem;
 }
 
+.hotelListWrapper {
+  margin: 0 22rem;
+  padding: 2rem;
+}
+
+@media only screen and (max-width: 1440px) {
+  .listSummary {
+    margin: 0 8rem;
+  }
+  .hotelListWrapper {
+    margin: 0 8rem;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .listSummary {
+    margin: 0 2rem;
+  }
+  .hotelListWrapper {
+    margin: 0 2rem;
+  }
+}
+
 .filterDetails {
   font-size: 0.9rem;
 }
@@ -24,11 +47,6 @@
   margin-top: 0.5rem;
   font-size: 2rem;
   font-weight: 600;
-}
-
-.hotelListWrapper {
-  margin: 0 22rem;
-  padding: 2rem;
 }
 
 .hotelListItem {

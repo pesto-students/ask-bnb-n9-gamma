@@ -31,9 +31,13 @@
 
 .buttonContainer,
 .avatarContainer {
-  display: inline-block;
+  display: inline-flex;
   position: absolute;
   right: 10rem;
+  height: 100%;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
 }
 
 .avatarImage {

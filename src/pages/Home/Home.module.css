@@ -16,12 +16,25 @@
   justify-content: center;
 }
 
+@media only screen and (max-width: 780px) {
+  .formWrapper {
+    margin: 5rem 12rem;
+  }
+}
+
 .formContainer {
   display: flex;
-  height: 4rem;
+  /* height: 4rem; */
+  margin: 0 auto;
   padding: 1rem;
   background-color: #fff;
-  border-radius: 4rem;
+  border-radius: 4rem !important;
+}
+
+.inputGrid {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchIcon {
@@ -72,8 +85,6 @@ button[type='submit'].submitButton {
   border-radius: 2rem;
   height: 3rem;
   width: 3rem;
-  position: relative;
-  bottom: 0.5rem;
 }
 
 /* input[type='date']:not(.has-value):before {

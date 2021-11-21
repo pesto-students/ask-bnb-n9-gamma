@@ -115,6 +115,12 @@ To build the project, run command
 ```bash
   npm run build
 ```
+
+## Environment Variables
+To run this project, you will need to add the following environment variables to your .env file
+
+`REACT_APP_API_URL` = Your backend server endpoint
+
 ## Authors
 
 - [@Arvinth Chandrashekaran](https://github.com/ArvinthC3000)

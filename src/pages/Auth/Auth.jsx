@@ -11,10 +11,14 @@ import {
 import styles from './Auth.module.css';
 import axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
+import { connect } from 'react-redux';
 
 const API_ENDPOINT = process.env.REACT_APP_API_URL;
 
 const Auth = props => {
+  console.log(props);
+  const { history, location } = props;
+  // console.log(props);
   const [hideSignIn, setHideSignIn] = useState(false);
   const [hideSignUp, setHideSignUp] = useState(true);
   const [formHeader, setFormHeader] = useState('Sign In');
@@ -25,7 +29,7 @@ const Auth = props => {
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   // Show Login Form & hide Register Form
-  const showLoginForm = () => {
+  const showLoginForm = ({ history }) => {
     setHideSignIn(false);
     setHideSignUp(true);
     setFormHeader('Sign In');
@@ -76,9 +80,8 @@ const Auth = props => {
       localStorage.setItem('isAuthenticated', true);
       setSuccessMessage(payload.message);
       setShowSuccessMessage(true);
-      if (props.location.state !== undefined)
-        window.location.href = props.location.state.referrer;
-      else window.location.href = '/';
+      if (location.state !== undefined) history.push(location.state.referrer);
+      else history.push('/');
     }
   };
 
@@ -135,9 +138,8 @@ const Auth = props => {
         localStorage.setItem('isAuthenticated', true);
         setSuccessMessage(payload.message);
         setShowSuccessMessage(true);
-        if (props.location.state !== undefined)
-          window.location.href = props.location.state.referrer;
-        else window.location.href = '/';
+        if (location.state !== undefined) history.href(location.state.referrer);
+        else history.href('/');
       }
     });
   };
@@ -155,34 +157,32 @@ const Auth = props => {
                   className={styles.form}
                   hidden={hideSignIn}
                   onSubmit={handleLoginSubmit}
-                  data-testid="loginform"
-                >
+                  data-testid='loginform'>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.email}
-                      placeholder="Email"
-                      name="email"
+                      placeholder='Email'
+                      name='email'
                       onChange={handleChange}
-                      data-testid="loginemail"
+                      data-testid='loginemail'
                     />
                   </Form.Field>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.password}
-                      type="password"
-                      placeholder="Password"
-                      name="password"
+                      type='password'
+                      placeholder='Password'
+                      name='password'
                       onChange={handleChange}
-                      data-testid="loginpassword"
+                      data-testid='loginpassword'
                     />
                   </Form.Field>
                   <Button
                     basic
-                    color="black"
+                    color='black'
                     className={styles.button}
-                    type="submit"
-                    data-testid="loginsubmit"
-                  >
+                    type='submit'
+                    data-testid='loginsubmit'>
                     Continue
                   </Button>
                   <span style={{ marginTop: '10px' }}>
@@ -198,43 +198,41 @@ const Auth = props => {
                 <Form
                   className={styles.form}
                   hidden={hideSignUp}
-                  onSubmit={handleRegisterSubmit}
-                >
+                  onSubmit={handleRegisterSubmit}>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.name}
-                      placeholder="Full Name"
-                      name="name"
+                      placeholder='Full Name'
+                      name='name'
                       onChange={handleChange}
-                      data-testid="registername"
+                      data-testid='registername'
                     />
                   </Form.Field>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.email}
-                      placeholder="Email"
-                      name="email"
+                      placeholder='Email'
+                      name='email'
                       onChange={handleChange}
-                      data-testid="registeremail"
+                      data-testid='registeremail'
                     />
                   </Form.Field>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.password}
-                      type="password"
-                      placeholder="Password"
-                      name="password"
+                      type='password'
+                      placeholder='Password'
+                      name='password'
                       onChange={handleChange}
-                      data-testid="registerpassword"
+                      data-testid='registerpassword'
                     />
                   </Form.Field>
                   <Button
                     basic
-                    color="black"
+                    color='black'
                     className={styles.button}
-                    type="submit"
-                    data-testid="registersubmit"
-                  >
+                    type='submit'
+                    data-testid='registersubmit'>
                     Sign Up Now
                   </Button>
                   <span style={{ marginTop: '10px' }}>
@@ -252,20 +250,19 @@ const Auth = props => {
                 </Message>
                 <div className={styles.or}>OR</div>
                 <GoogleLogin
-                  clientId="62568579646-22dpn8tc7i77jg2c0mmtestk55nm1naj.apps.googleusercontent.com"
+                  clientId='62568579646-22dpn8tc7i77jg2c0mmtestk55nm1naj.apps.googleusercontent.com'
                   render={renderProps => (
                     <Button
                       basic
-                      color="black"
+                      color='black'
                       className={styles.button}
-                      type="submit"
+                      type='submit'
                       onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}
-                    >
-                      <Icon name="google" /> Continue with Google
+                      disabled={renderProps.disabled}>
+                      <Icon name='google' /> Continue with Google
                     </Button>
                   )}
-                  buttonText="Login"
+                  buttonText='Login'
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
                   cookiePolicy={'single_host_origin'}
@@ -280,4 +277,4 @@ const Auth = props => {
   );
 };
 
-export default Auth;
+export default connect(null, {})(Auth);

@@ -15,17 +15,17 @@ const Header = ({ history }) => {
       <div className={style.avatarContainer}>
         <Image
           className={style.avatarImage}
-          src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+          src='https://react.semantic-ui.com/images/wireframe/square-image.png'
           avatar
         />
         <span>{'Welcome, ' + props.username.split(' ')[0]}</span>
         <Dropdown>
           <Dropdown.Menu>
             <Dropdown.Item>
-              <Link to="/">Home</Link>
+              <Link to='/'>Home</Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link to="/bookinghistory">My Bookings</Link>
+              <Link to='/bookinghistory'>My Bookings</Link>
             </Dropdown.Item>
             <Dropdown.Item>My Account (FS)</Dropdown.Item>
             <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
@@ -38,11 +38,7 @@ const Header = ({ history }) => {
   const AuthButton = props => {
     return (
       <div className={style.buttonContainer}>
-        <Button
-          basic
-          color="black"
-          onClick={() => (window.location.href = '/auth')}
-        >
+        <Button basic color='black' onClick={() => history.push('/auth')}>
           <b className={style.authButton}>Login/Sign Up</b>
         </Button>
       </div>
@@ -51,7 +47,7 @@ const Header = ({ history }) => {
 
   const logout = () => {
     localStorage.clear();
-    window.location.href = '/';
+    history.push('/');
   };
 
   return (
@@ -61,9 +57,8 @@ const Header = ({ history }) => {
           <div className={style.headerContainer}>
             <div
               onClick={() => history.push('/')}
-              className={style.logoContainer}
-            >
-              <img src={logo} alt="logo" /> BnB
+              className={style.logoContainer}>
+              <img src={logo} alt='logo' /> BnB
             </div>
           </div>
         </Grid.Column>

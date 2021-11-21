@@ -12,20 +12,20 @@ import HotelList from './pages/HotelList/HotelList';
 import ProtectedRoute from './pages/shared/ProtectedRoute';
 import store from './store';
 
-const App = () => {
+const App = props => {
   return (
     <Provider store={store}>
-      <div className="App">
+      <div className='App'>
         <Router>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/auth" component={Auth} />
-            <Route exact path="/list" component={HotelList} />
-            <Route exact path="/hotel/:hotelId" component={HotelDetail} />
-            <ProtectedRoute exact path="/booking" component={Booking} />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/auth' component={Auth} {...props} />
+            <Route exact path='/list' component={HotelList} />
+            <Route exact path='/hotel/:hotelId' component={HotelDetail} />
+            <ProtectedRoute exact path='/booking' component={Booking} />
             <ProtectedRoute
               exact
-              path="/bookingHistory"
+              path='/bookingHistory'
               component={BookingHistory}
             />
           </Switch>

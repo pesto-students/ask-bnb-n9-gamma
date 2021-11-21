@@ -43,7 +43,7 @@ ROUTE /list
 
 This page shows the list of all available hotels that match the search criteria.
 
-![Desktop Layout](https://github.com/pesto-students/ask-bnb-n9-gamma/blob/master/src/assets/screenshot/home.png)
+![Desktop Layout](https://github.com/pesto-students/ask-bnb-n9-gamma/blob/master/src/assets/screenshot/hotelList.png)
 
 ### Hotel Details
 

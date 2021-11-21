@@ -157,7 +157,7 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
   return (
     <>
       <Header history={history} />
-      <Container textAlign="left">
+      <Container textAlign='left'>
         <Message success hidden={!showSuccessMessage}>
           {successMessage}
         </Message>
@@ -178,43 +178,41 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
               <p>{booking_details.guests}</p>
               <Divider />
               <h2>Pay With</h2>
-              <img className={styles.logo} src={visa} alt="visa" />
-              <img className={styles.logo} src={mastercard} alt="mastercard" />
-              <img className={styles.logo} src={upi} alt="upi" />
+              <img className={styles.logo} src={visa} alt='visa' />
+              <img className={styles.logo} src={mastercard} alt='mastercard' />
+              <img className={styles.logo} src={upi} alt='upi' />
               <Divider />
               <h2>Cancellation Policy</h2>
               <br />
               <p>
                 Only the cleaning fee is refundable because check-in is less
                 than 7 days away.
-                <a href="!#">
+                <a href='!#'>
                   <strong>Learn More</strong>
                 </a>
               </p>
               <p>
                 Our Extenuating Circumstances policy does not cover travel
                 disruptions caused by COVID-19.
-                <a href="!#">
+                <a href='!#'>
                   <strong>Learn More</strong>
                 </a>
               </p>
             </Segment>
             <Button
-              size="big"
-              color="green"
+              size='big'
+              color='green'
               // basic
-              floated="left"
-              onClick={checkout}
-            >
+              floated='left'
+              onClick={checkout}>
               Confirm and Pay
             </Button>
             <Button
-              size="big"
-              color="red"
+              size='big'
+              color='red'
               basic
-              floated="left"
-              onClick={() => history.push(`hotel/${_id}`)}
-            >
+              floated='left'
+              onClick={() => history.push(`hotel/${_id}`)}>
               Cancel
             </Button>
           </Grid.Column>
@@ -226,10 +224,10 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
                     <Grid.Column width={8}>
                       <Image
                         src={booking_details.hotel_thumbnail}
-                        size="medium"
+                        size='medium'
                       />
                     </Grid.Column>
-                    <Grid.Column width={8} textAlign="right">
+                    <Grid.Column width={8} textAlign='right'>
                       <h3>{booking_details.hotel_name}</h3>
                       <h5>{booking_details.city}</h5>
                     </Grid.Column>
@@ -243,7 +241,7 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
                         <h2>Price Details</h2>
                       </Grid.Column>
                     </Grid.Row>
-                    {booking_details.rooms_selected.length &&
+                    {booking_details?.rooms_selected.length &&
                       booking_details.rooms_selected.map(room => {
                         return (
                           <Grid.Row>

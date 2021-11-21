@@ -9,25 +9,45 @@ import Auth from './pages/Auth/Auth';
 import Booking from './pages/Booking/Booking';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
 import ProtectedRoute from './pages/shared/ProtectedRoute';
+import { useState } from 'react';
 
 const App = () => {
-  const {
-    hotel: { showModal },
-  } = store.getState();
-  console.log(showModal);
+  // const {
+  //   hotel: { showModal },
+  // } = store.getState();
+  // console.log(showModal);
+  const [showModal, setShowModal] = useState(false);
+
+  const activateModal = () => {
+    console.log('I am in openmodal');
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    console.log('i am in close modal');
+    setShowModal(false);
+  };
+
   return (
     <Provider store={store}>
-      <div className='App'>
-        <Auth showModal={showModal} />
+      <div className="App">
         <Router>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/list' component={HotelList} />
-            <Route exact path='/hotel/:hotelId' component={HotelDetail} />
-            <ProtectedRoute exact path='/booking' component={Booking} />
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/list"
+              component={HotelList}
+              // render={props => {
+              //   <HotelList {...props} />;
+              // }}
+            />
+            <Route exact path="/hotel/:hotelId" component={HotelDetail} />
+            <Route exact path="/auth" component={Auth} />
+            <ProtectedRoute exact path="/booking" component={Booking} />
             <ProtectedRoute
               exact
-              path='/bookingHistory'
+              path="/bookingHistory"
               component={BookingHistory}
             />
           </Switch>

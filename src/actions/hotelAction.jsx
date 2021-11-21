@@ -32,6 +32,7 @@ export const addFilters = filters => async dispatch => {
 
 export const getHotels = location => async dispatch => {
   try {
+    console.log(API_ENDPOINT);
     const res = await axios.get(`${API_ENDPOINT}api/hotel/getHotels`, {
       params: { location, select: '' },
     });

@@ -1,14 +1,16 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import HotelList from './pages/HotelList/HotelList';
-import HotelDetail from './pages/HotelDetails/HotelDetail';
+
 import { Provider } from 'react-redux';
-import store from './store';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import Auth from './pages/Auth/Auth';
 import Booking from './pages/Booking/Booking';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
+import Home from './pages/Home/Home';
+import HotelDetail from './pages/HotelDetails/HotelDetail';
+import HotelList from './pages/HotelList/HotelList';
 import ProtectedRoute from './pages/shared/ProtectedRoute';
+import store from './store';
 
 const App = () => {
   return (
@@ -17,16 +19,9 @@ const App = () => {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route
-              exact
-              path="/list"
-              component={HotelList}
-              // render={props => {
-              //   <HotelList {...props} />;
-              // }}
-            />
-            <Route exact path="/hotel/:hotelId" component={HotelDetail} />
             <Route exact path="/auth" component={Auth} />
+            <Route exact path="/list" component={HotelList} />
+            <Route exact path="/hotel/:hotelId" component={HotelDetail} />
             <ProtectedRoute exact path="/booking" component={Booking} />
             <ProtectedRoute
               exact

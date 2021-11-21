@@ -1,12 +1,13 @@
+import axios from 'axios';
+import moment from 'moment';
 import { useEffect, useState } from 'react';
+import Loader from 'react-cssfx-loading/lib/FillingBottle';
+import { connect } from 'react-redux';
 import { Button, Container, Grid, Segment } from 'semantic-ui-react';
+
+import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 import styles from './BookingHistory.module.css';
-import moment from 'moment';
-import axios from 'axios';
-import Footer from '../shared/Footer';
-import { connect } from 'react-redux';
-import Loader from 'react-cssfx-loading/lib/FillingBottle';
 
 const API_ENDPOINT = process.env.REACT_APP_API_URL;
 

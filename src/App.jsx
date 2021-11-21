@@ -9,25 +9,8 @@ import Auth from './pages/Auth/Auth';
 import Booking from './pages/Booking/Booking';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
 import ProtectedRoute from './pages/shared/ProtectedRoute';
-import { useState } from 'react';
 
 const App = () => {
-  // const {
-  //   hotel: { showModal },
-  // } = store.getState();
-  // console.log(showModal);
-  const [showModal, setShowModal] = useState(false);
-
-  const activateModal = () => {
-    console.log('I am in openmodal');
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    console.log('i am in close modal');
-    setShowModal(false);
-  };
-
   return (
     <Provider store={store}>
       <div className="App">

@@ -19,6 +19,8 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { confirmRooms } from '../../actions/hotelAction';
 
+const API_ENDPOINT = process.env.REACT_APP_API_URL;
+
 const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
   console.log(current, blockedRooms, filter);
   const { hotel_name, city, indexImage, _id } = current;
@@ -58,7 +60,7 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
     // Create order from the server
     var res = await axios({
       method: 'POST',
-      url: 'http://localhost:9000/api/booking/newbooking',
+      url: `${API_ENDPOINT}api/booking/newbooking`,
       data: {
         hotel_id: booking_details.hotel_id,
         hotel_name: booking_details.hotel_name,
@@ -116,7 +118,7 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
         console.log('Signature', response.razorpay_signature);
         const res = await axios({
           method: 'POST',
-          url: 'http://localhost:9000/api/booking/verifypayment',
+          url: `${API_ENDPOINT}api/booking/verifypayment`,
           data: {
             order_id: response.razorpay_order_id.toString(),
             payment_id: response.razorpay_payment_id.toString(),
@@ -154,7 +156,7 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
   return (
     <>
       <Header history={history} />
-      <Container textAlign='left'>
+      <Container textAlign="left">
         <Message success hidden={!showSuccessMessage}>
           {successMessage}
         </Message>
@@ -175,41 +177,43 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
               <p>{booking_details.guests}</p>
               <Divider />
               <h2>Pay With</h2>
-              <img className={styles.logo} src={visa} alt='visa' />
-              <img className={styles.logo} src={mastercard} alt='mastercard' />
-              <img className={styles.logo} src={upi} alt='upi' />
+              <img className={styles.logo} src={visa} alt="visa" />
+              <img className={styles.logo} src={mastercard} alt="mastercard" />
+              <img className={styles.logo} src={upi} alt="upi" />
               <Divider />
               <h2>Cancellation Policy</h2>
               <br />
               <p>
                 Only the cleaning fee is refundable because check-in is less
                 than 7 days away.
-                <a href='!#'>
+                <a href="!#">
                   <strong>Learn More</strong>
                 </a>
               </p>
               <p>
                 Our Extenuating Circumstances policy does not cover travel
                 disruptions caused by COVID-19.
-                <a href='!#'>
+                <a href="!#">
                   <strong>Learn More</strong>
                 </a>
               </p>
             </Segment>
             <Button
-              size='big'
-              color='green'
+              size="big"
+              color="green"
               // basic
-              floated='left'
-              onClick={checkout}>
+              floated="left"
+              onClick={checkout}
+            >
               Confirm and Pay
             </Button>
             <Button
-              size='big'
-              color='red'
+              size="big"
+              color="red"
               basic
-              floated='left'
-              onClick={() => history.push(`hotel/${_id}`)}>
+              floated="left"
+              onClick={() => history.push(`hotel/${_id}`)}
+            >
               Cancel
             </Button>
           </Grid.Column>
@@ -221,10 +225,10 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
                     <Grid.Column width={8}>
                       <Image
                         src={booking_details.hotel_thumbnail}
-                        size='medium'
+                        size="medium"
                       />
                     </Grid.Column>
-                    <Grid.Column width={8} textAlign='right'>
+                    <Grid.Column width={8} textAlign="right">
                       <h3>{booking_details.hotel_name}</h3>
                       <h5>{booking_details.city}</h5>
                     </Grid.Column>
@@ -238,31 +242,32 @@ const Booking = ({ current, blockedRooms, filter, confirmRooms, history }) => {
                         <h2>Price Details</h2>
                       </Grid.Column>
                     </Grid.Row>
-                    {booking_details.rooms_selected.map(room => {
-                      return (
-                        <Grid.Row>
-                          <Grid.Column width={8}>
-                            <span className={styles.item}>
-                              {room.type.toUpperCase()} X{' '}
-                              {moment(booking_details.check_out).diff(
-                                moment(booking_details.check_in),
-                                'days'
-                              )}{' '}
-                              days
-                            </span>
-                          </Grid.Column>
-                          <Grid.Column width={8}>
-                            <span className={styles.price}>
-                              {room.price *
-                                moment(booking_details.check_out).diff(
+                    {booking_details.rooms_selected.length &&
+                      booking_details.rooms_selected.map(room => {
+                        return (
+                          <Grid.Row>
+                            <Grid.Column width={8}>
+                              <span className={styles.item}>
+                                {room.type.toUpperCase()} X{' '}
+                                {moment(booking_details.check_out).diff(
                                   moment(booking_details.check_in),
                                   'days'
-                                )}
-                            </span>
-                          </Grid.Column>
-                        </Grid.Row>
-                      );
-                    })}
+                                )}{' '}
+                                days
+                              </span>
+                            </Grid.Column>
+                            <Grid.Column width={8}>
+                              <span className={styles.price}>
+                                {room.price *
+                                  moment(booking_details.check_out).diff(
+                                    moment(booking_details.check_in),
+                                    'days'
+                                  )}
+                              </span>
+                            </Grid.Column>
+                          </Grid.Row>
+                        );
+                      })}
 
                     <Grid.Row>
                       <Grid.Column width={8}>

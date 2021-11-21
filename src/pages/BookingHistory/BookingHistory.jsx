@@ -8,6 +8,8 @@ import Footer from '../shared/Footer';
 import { connect } from 'react-redux';
 import Loader from 'react-cssfx-loading/lib/FillingBottle';
 
+const API_ENDPOINT = process.env.REACT_APP_API_URL;
+
 const BookingHistory = ({ history }) => {
   const [bookingHistory, setBookingHistory] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,7 +18,7 @@ const BookingHistory = ({ history }) => {
     setLoading(true);
     axios({
       method: 'GET',
-      url: 'http://localhost:9000/api/booking/bookinghistory',
+      url: `${API_ENDPOINT}api/booking/bookinghistory`,
       headers: {
         'auth-token': localStorage.getItem('auth-token'),
       },
@@ -33,8 +35,8 @@ const BookingHistory = ({ history }) => {
 
   if (loading) {
     return (
-      <div className='loaderContainer'>
-        <Loader width='5rem' height='5rem' />
+      <div className="loaderContainer">
+        <Loader width="5rem" height="5rem" />
       </div>
     );
   }
@@ -42,11 +44,11 @@ const BookingHistory = ({ history }) => {
   return (
     <>
       <Header history={history} />
-      <Container textAlign='left' className={styles.bottomMargin}>
+      <Container textAlign="left" className={styles.bottomMargin}>
         <h1>My Bookings</h1>
         {bookingHistory.length
           ? bookingHistory.map(booking => (
-              <Segment color='red'>
+              <Segment color="red">
                 <Grid>
                   <Grid.Row>
                     <Grid.Column width={10}>
@@ -58,7 +60,7 @@ const BookingHistory = ({ history }) => {
                       <span className={styles.cityName}>{booking.city}</span>
                     </Grid.Column>
                     <Grid.Column width={6}>
-                      <Button basic color='red' floated='right' disabled>
+                      <Button basic color="red" floated="right" disabled>
                         Cancel Booking (FS)
                       </Button>
                     </Grid.Column>

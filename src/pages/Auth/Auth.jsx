@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Button,
   Form,
@@ -15,11 +15,6 @@ import { GoogleLogin } from 'react-google-login';
 const API_ENDPOINT = process.env.REACT_APP_API_URL;
 
 const Auth = props => {
-  // useEffect(() => {
-  //   setOpen(props.showModal);
-  // }, [props.showModal]);
-  // const {} = props
-  //const [open, setOpen] = useState(props.showModal);
   const [hideSignIn, setHideSignIn] = useState(false);
   const [hideSignUp, setHideSignUp] = useState(true);
   const [formHeader, setFormHeader] = useState('Sign In');
@@ -149,13 +144,6 @@ const Auth = props => {
 
   return (
     <Container style={{ marginTop: '30px' }}>
-      {/* <Modal
-        size="tiny"
-        onClose={props.closeModal}
-        onOpen={() => setOpen(true)}
-        open={open}
-      >
-        <Modal.Content> */}
       <Grid>
         <Grid.Row>
           <Grid.Column width={4}></Grid.Column>
@@ -288,8 +276,6 @@ const Auth = props => {
           <Grid.Column width={4}></Grid.Column>
         </Grid.Row>
       </Grid>
-      {/* </Modal.Content>
-      </Modal> */}
     </Container>
   );
 };

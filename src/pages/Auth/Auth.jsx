@@ -11,10 +11,12 @@ import {
 import styles from './Auth.module.css';
 import axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
+import { useHistory } from 'react-router-dom';
 
 const API_ENDPOINT = process.env.REACT_APP_API_URL;
 
 const Auth = props => {
+  const history = useHistory();
   const [hideSignIn, setHideSignIn] = useState(false);
   const [hideSignUp, setHideSignUp] = useState(true);
   const [formHeader, setFormHeader] = useState('Sign In');
@@ -77,8 +79,8 @@ const Auth = props => {
       setSuccessMessage(payload.message);
       setShowSuccessMessage(true);
       if (props.location.state !== undefined)
-        window.location.href = props.location.state.referrer;
-      else window.location.href = '/';
+        history.push(props.location.state.referrer);
+      else history.push('/');
     }
   };
 
@@ -136,8 +138,8 @@ const Auth = props => {
         setSuccessMessage(payload.message);
         setShowSuccessMessage(true);
         if (props.location.state !== undefined)
-          window.location.href = props.location.state.referrer;
-        else window.location.href = '/';
+          history.push(props.location.state.referrer);
+        else history.push('/');
       }
     });
   };

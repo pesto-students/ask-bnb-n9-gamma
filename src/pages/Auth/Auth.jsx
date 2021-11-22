@@ -27,7 +27,7 @@ const Auth = props => {
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   // Show Login Form & hide Register Form
-  const showLoginForm = () => {
+  const showLoginForm = ({ history }) => {
     setHideSignIn(false);
     setHideSignUp(true);
     setFormHeader('Sign In');

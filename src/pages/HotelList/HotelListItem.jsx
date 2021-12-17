@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import { FaStar } from 'react-icons/fa';
 import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react';
-
+import { Button, Grid, Image } from 'semantic-ui-react';
 import { setCurrentRoom } from '../../actions/hotelAction';
 import styles from './HotelList.module.css';
 
@@ -27,31 +26,47 @@ const HotelListItem = prop => {
   return (
     <>
       <hr />
-      <div className={styles.hotelListItem}>
-        <img src={data.indexImage} alt='' />
-        <div className={styles.descriptionContainer}>
-          <div className={styles.descriptionHeader}>{data.hotel_name}</div>
-          <div className={styles.descriptionSubHeader}>{data.description}</div>
-          <div className={styles.amnities}>{getRoomType()}</div>
-          <div className={styles.amnities}>{getAmenities()}</div>
-          <Button
-            onClick={() => showRoomDetails()}
-            className={styles.viewButton}
-            color='teal'>
-            View Rooms
-          </Button>
-          <div className={styles.reviewContainer}>
-            <FaStar color='yellow' /> {data.ratings} (
-            <span>{data.reviews}</span>)
-          </div>
-          <div className={styles.priceContainer}>
-            <div className={styles.perDayPrice}>
-              Rs. {basePrice} <span>/ night</span>
+      <Grid stackable>
+        <Grid.Row>
+          <Grid.Column width={6} textAlign="center">
+            <Image
+              style={{ width: '100%' }}
+              src={data.indexImage}
+              size="medium"
+              verticalAlign="middle"
+            />
+          </Grid.Column>
+          <Grid.Column width={10}>
+            <div>
+              <div className={styles.descriptionHeader}>{data.hotel_name}</div>
+              <div className={styles.descriptionSubHeader}>
+                {data.description}
+              </div>
+              <div className={styles.amnities}>{getRoomType()}</div>
+              <div className={styles.amnities}>{getAmenities()}</div>
+              <div>
+                <Button
+                  className={styles.viewButton}
+                  onClick={() => showRoomDetails()}
+                  color="teal"
+                >
+                  View Rooms
+                </Button>
+                <div className={styles.priceContainer}>
+                  <div className={styles.perDayPrice}>
+                    Rs. {basePrice} <span>/ night</span>
+                  </div>
+                  <div className={styles.totalPrice}>Rs. {basePrice} total</div>
+                </div>
+              </div>
+              <div className={styles.reviewContainer}>
+                <FaStar color="yellow" /> {data.ratings} (
+                <span>{data.reviews}</span>)
+              </div>
             </div>
-            <div className={styles.totalPrice}>Rs. {basePrice} total</div>
-          </div>
-        </div>
-      </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </>
   );
 };

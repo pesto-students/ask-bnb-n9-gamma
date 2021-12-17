@@ -18,7 +18,7 @@
 
 .hotelListWrapper {
   margin: 0 22rem;
-  padding: 2rem;
+  padding: 0 1rem;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -32,10 +32,10 @@
 
 @media only screen and (max-width: 960px) {
   .listSummary {
-    margin: 0 2rem;
+    margin: 0 1rem;
   }
   .hotelListWrapper {
-    margin: 0 2rem;
+    margin: 0 1rem;
   }
 }
 
@@ -55,7 +55,7 @@
   margin: 1.5rem 0;
 }
 
-.hotelListItem img {
+.hotelListItem Image {
   height: 100%;
   width: 15rem;
   border-radius: 1rem;
@@ -97,16 +97,17 @@
 }
 
 .reviewContainer {
-  position: absolute;
+  /* position: absolute; */
+  margin-top: 1rem;
   bottom: 1rem;
   font-size: 0.9rem;
 }
 
-.priceContainer {
+/* .priceContainer {
   position: absolute;
   bottom: 1rem;
   font-size: 0.9rem;
-}
+} */
 
 .priceContainer {
   position: absolute;

@@ -15,12 +15,10 @@ Welcome! We hope you enjoy this app as much as we enjoyed making it.
 1. [Demo](#demo)
 2. [Installation](#installation)
 3. [Technology Stack](#technology-stack)
-4. [Authors](#authors)
-5. [License](#license)
-6. [Features](#features)
-7. [Pages/Components](#pagescomponents)
-8. [Environment Variables](#environment-variables)
-9. [Authors](#authors)
+4. [License](#license)
+5. [Features](#features)
+6. [Environment Variables](#environment-variables)
+7. [Authors](#authors)
 <br/>
 
 ## Demo
@@ -63,68 +61,6 @@ The application provides the following features -
 - Register and login (both local and Google OAuth2.0).
 - Book hotel rooms by making online payment.
 - See booking history for logged in user.
-
-
-## Pages/Components
-
-### Home
-
-```
-ROUTE /
-```
-This page is used to search for hotels based on location, checkin, checkout dates and 
-number of guests.
-
-![Desktop Layout](https://github.com/pesto-students/ask-bnb-n9-gamma/blob/master/src/assets/screenshot/home.png)
-
-### Hotels List
-
-```
-ROUTE /list
-```
-
-This page shows the list of all available hotels that match the search criteria.
-
-![Desktop Layout](https://github.com/pesto-students/ask-bnb-n9-gamma/blob/master/src/assets/screenshot/hotelList.png)
-
-### Hotel Details
-
-```
-ROUTE /hotel/:hotelId
-```
-This page allows the selection of rooms from the selected hotel in previous step for booking.
-
-![Desktop Layout](https://github.com/pesto-students/ask-bnb-n9-gamma/blob/master/src/assets/screenshot/roomsDetail.png)
-
-### Signin/Signup
-
-```
-ROUTE /auth
-```
-This page is used to register new users, login registered users using local strategy
-or Google OAuth2.0 client.
-
-![Desktop Layout](https://github.com/pesto-students/ask-bnb-n9-gamma/blob/master/src/assets/screenshot/authentication.jpg)
-
-### Booking & Payment
-
-```
-ROUTE /booking
-```
-
-This is used to confirm the booking details and make payment for booking.
-
-![Desktop Layout](https://github.com/pesto-students/ask-bnb-n9-gamma/blob/master/src/assets/screenshot/booking.jpg)
-
-### Booking History
-
-```
-ROUTE /bookinghistory
-```
-The currently logged in user can view his booking history from this page.
-
-![Desktop Layout](https://github.com/pesto-students/ask-bnb-n9-gamma/blob/master/src/assets/screenshot/booking_history.jpg)
-
 
 
 ## Environment Variables

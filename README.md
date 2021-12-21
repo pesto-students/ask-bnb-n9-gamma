@@ -10,7 +10,7 @@ guests.
 
 Welcome! We hope you enjoy this app as much as we enjoyed making it. 
 
-# Table of Content
+# Table of Contents
 
 1. [Demo](#demo)
 2. [Installation](#installation)

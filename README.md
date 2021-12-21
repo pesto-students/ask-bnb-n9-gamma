@@ -19,16 +19,14 @@ Welcome! We hope you enjoy this app as much as we enjoyed making it.
 4. [Authors](#authors)
 5. [License](#license)
 6. [Features](#features)
-7. [Pages/Components](#pages/components)
+7. [Pages/Components](#pagescomponents)
 8. [Environment Variables](#environment-variables)
 9. [Authors](#authors)
-
 <br/>
 
 ## Demo
 
 [Live Demo](https://admiring-wing-bac7ac.netlify.app/)
-
 <br/>
 
 Test Credentials:

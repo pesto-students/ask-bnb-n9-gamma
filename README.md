@@ -18,6 +18,10 @@ Welcome! We hope you enjoy this app as much as we enjoyed making it.
 3. [Technology Stack](#technology-stack)
 4. [Authors](#authors)
 5. [License](#license)
+6. [Features](#features)
+7. [Pages/Components](#pages/components)
+8. [Environment Variables](#environment-variables)
+9. [Authors](#authors)
 
 <br/>
 

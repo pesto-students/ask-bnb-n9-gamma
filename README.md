@@ -1,7 +1,6 @@
 
 # AskBnB - Hotel Room Booking Frontend Application
-
-## Overview
+<br/>
 
 **AskBnB** is an online hotel room booking application. The application is designed
 for users who are planning to travel to some destination and want to book their stays in advance. 

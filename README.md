@@ -15,10 +15,9 @@ Welcome! We hope you enjoy this app as much as we enjoyed making it.
 1. [Demo](#demo)
 2. [Installation](#installation)
 3. [Technology Stack](#technology-stack)
-4. [License](#license)
-5. [Features](#features)
-6. [Environment Variables](#environment-variables)
-7. [Authors](#authors)
+4. [Features](#features)
+5. [Environment Variables](#environment-variables)
+6. [Authors](#authors)
 <br/>
 
 ## Demo

@@ -47,6 +47,13 @@ const Auth = props => {
     setInputs(values => ({ ...values, [name]: value }));
   };
 
+  // Handles guest credential
+  const setGuestCredential = event => {
+    const email = 'pesto@pesto.tech';
+    const password = 'pesto@123';
+    setInputs(values => ({ email, password }));
+  };
+
   // Handles onSubmit event of Login form
   const handleLoginSubmit = async event => {
     event.preventDefault();
@@ -186,7 +193,7 @@ const Auth = props => {
                     Continue
                   </Button>
                   <span style={{ marginTop: '10px' }}>
-                    <span className={styles.link}>Forgot Password</span>
+                    <span onClick={setGuestCredential} className={styles.link}>Login as Guest</span>
                   </span>
                   <span style={{ marginTop: '10px' }}>
                     Don't have an account.

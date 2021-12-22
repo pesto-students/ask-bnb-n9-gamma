@@ -19,10 +19,7 @@ const HotelDetail = ({
   blockRooms,
   history,
 }) => {
-  const {
-    hotel_id,
-    room_collection: { standard },
-  } = currentHotel;
+  const { hotel_id, room_collection } = currentHotel;
   console.log(currentHotel);
 
   const [roomCount, setRoomCount] = useState(1);
@@ -35,6 +32,13 @@ const HotelDetail = ({
     getMinRoomAvailed();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minRoom]);
+
+  if (!currentHotel.room_collection) {
+    history.push('/');
+    return <div> No Data </div>;
+  }
+
+  const { standard } = room_collection;
 
   const bookNewRooms = () => {
     history.push('/booking');

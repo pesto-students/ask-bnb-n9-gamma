@@ -157,34 +157,32 @@ const Auth = props => {
                   className={styles.form}
                   hidden={hideSignIn}
                   onSubmit={handleLoginSubmit}
-                  data-testid="loginform"
-                >
+                  data-testid='loginform'>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.email}
-                      placeholder="Email"
-                      name="email"
+                      placeholder='Email'
+                      name='email'
                       onChange={handleChange}
-                      data-testid="loginemail"
+                      data-testid='loginemail'
                     />
                   </Form.Field>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.password}
-                      type="password"
-                      placeholder="Password"
-                      name="password"
+                      type='password'
+                      placeholder='Password'
+                      name='password'
                       onChange={handleChange}
-                      data-testid="loginpassword"
+                      data-testid='loginpassword'
                     />
                   </Form.Field>
                   <Button
                     basic
-                    color="black"
+                    color='black'
                     className={styles.button}
-                    type="submit"
-                    data-testid="loginsubmit"
-                  >
+                    type='submit'
+                    data-testid='loginsubmit'>
                     Continue
                   </Button>
                   <span style={{ marginTop: '10px' }}>
@@ -200,43 +198,41 @@ const Auth = props => {
                 <Form
                   className={styles.form}
                   hidden={hideSignUp}
-                  onSubmit={handleRegisterSubmit}
-                >
+                  onSubmit={handleRegisterSubmit}>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.name}
-                      placeholder="Full Name"
-                      name="name"
+                      placeholder='Full Name'
+                      name='name'
                       onChange={handleChange}
-                      data-testid="registername"
+                      data-testid='registername'
                     />
                   </Form.Field>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.email}
-                      placeholder="Email"
-                      name="email"
+                      placeholder='Email'
+                      name='email'
                       onChange={handleChange}
-                      data-testid="registeremail"
+                      data-testid='registeremail'
                     />
                   </Form.Field>
                   <Form.Field className={styles.inputField}>
                     <input
                       value={inputs.password}
-                      type="password"
-                      placeholder="Password"
-                      name="password"
+                      type='password'
+                      placeholder='Password'
+                      name='password'
                       onChange={handleChange}
-                      data-testid="registerpassword"
+                      data-testid='registerpassword'
                     />
                   </Form.Field>
                   <Button
                     basic
-                    color="black"
+                    color='black'
                     className={styles.button}
-                    type="submit"
-                    data-testid="registersubmit"
-                  >
+                    type='submit'
+                    data-testid='registersubmit'>
                     Sign Up Now
                   </Button>
                   <span style={{ marginTop: '10px' }}>
@@ -254,20 +250,19 @@ const Auth = props => {
                 </Message>
                 <div className={styles.or}>OR</div>
                 <GoogleLogin
-                  clientId="62568579646-22dpn8tc7i77jg2c0mmtestk55nm1naj.apps.googleusercontent.com"
+                  clientId='62568579646-22dpn8tc7i77jg2c0mmtestk55nm1naj.apps.googleusercontent.com'
                   render={renderProps => (
                     <Button
                       basic
-                      color="black"
+                      color='black'
                       className={styles.button}
-                      type="submit"
+                      type='submit'
                       onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}
-                    >
-                      <Icon name="google" /> Continue with Google
+                      disabled={renderProps.disabled}>
+                      <Icon name='google' /> Continue with Google
                     </Button>
                   )}
-                  buttonText="Login"
+                  buttonText='Login'
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
                   cookiePolicy={'single_host_origin'}

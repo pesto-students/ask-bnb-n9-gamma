@@ -58,3 +58,7 @@
 .or::after {
   right: 0;
 }
+
+[hidden] {
+  display: none !important;
+}

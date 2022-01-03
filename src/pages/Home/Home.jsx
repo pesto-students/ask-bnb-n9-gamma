@@ -15,11 +15,20 @@ const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
     filter?.startDate || new Date().toLocaleDateString()
   );
   const [endDate, setEndDate] = useState(filter?.endDate || '');
-  const [guests, setGuests] = useState(filter?.guests || 2);
+  const [guests, setGuests] = useState(filter?.guests);
 
   const onSubmit = () => {
     addFilters({ location, startDate, endDate, guests });
     history.push('/list');
+  };
+
+  const _onFocus = e => {
+    e.currentTarget.type = 'date';
+  };
+
+  const _onBlur = e => {
+    e.currentTarget.type = 'text';
+    // e.currentTarget.placeholder = "Enter a Date";
   };
 
   return (
@@ -49,9 +58,11 @@ const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
                   </Grid.Column>
                   <Grid.Column width={3} className={styles.inputGrid}>
                     <input
-                      type='date'
+                      type='text'
                       name='startDate'
-                      placeholder='check-in'
+                      placeholder='Check-in'
+                      onFocus={_onFocus}
+                      onBlur={_onBlur}
                       // value={startDate}
                       className={styles.inputField}
                       min={new Date().toISOString().slice(0, -14)}
@@ -68,8 +79,11 @@ const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
                   </Grid.Column>
                   <Grid.Column width={3} className={styles.inputGrid}>
                     <input
-                      type='date'
+                      type='text'
                       name='endDate'
+                      placeholder='Check-out'
+                      onFocus={_onFocus}
+                      onBlur={_onBlur}
                       value={endDate}
                       min={startDate}
                       className={styles.inputField}
@@ -88,6 +102,7 @@ const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
                     <input
                       type='number'
                       name='guests'
+                      placeholder='Guests'
                       value={guests}
                       className={styles.inputField}
                       onChange={e => setGuests(e.target.value)}

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { connect } from 'react-redux';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Dropdown, Grid, Segment } from 'semantic-ui-react';
 
 import { addFilters } from '../../actions/hotelAction';
 import Footer from '../shared/Footer';
@@ -10,10 +10,17 @@ import Header from '../shared/Header';
 import styles from './Home.module.css';
 
 const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
+  const countryOptions = [
+    { key: 'af', value: 'bangalore', text: 'Bangalore' },
+    { key: 'ax', value: 'chennai', text: 'Chennai' },
+    { key: 'al', value: 'pune', text: 'Pune' },
+    { key: 'dz', value: 'mumbai', text: 'Mumbai' },
+    { key: 'as', value: 'kolkata', text: 'Kolkata' },
+    { key: 'dl', value: 'delhi', text: 'Delhi' },
+  ];
+
   const [location, setLocation] = useState(filter?.location || '');
-  const [startDate, setStartDate] = useState(
-    filter?.startDate || new Date().toLocaleDateString()
-  );
+  const [startDate, setStartDate] = useState(filter?.startDate || '');
   const [endDate, setEndDate] = useState(filter?.endDate || '');
   const [guests, setGuests] = useState(filter?.guests);
 
@@ -44,8 +51,16 @@ const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
             <Segment className={styles.formContainer}>
               <Grid stackable>
                 <Grid.Row>
-                  <Grid.Column width={6} className={styles.inputGrid}>
-                    <input
+                  <Grid.Column width={4} className={styles.inputGrid}>
+                    <Dropdown
+                      labeled
+                      className={styles.locationDropdown}
+                      defaultValue={location || ''}
+                      onChange={(e, { value }) => setLocation(value)}
+                      options={countryOptions}
+                      placeholder='Where are you going?'
+                    />
+                    {/* <input
                       type='text'
                       placeholder='Where are you going?'
                       value={location}
@@ -53,17 +68,16 @@ const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
                       onChange={e => setLocation(e.target.value)}
                       data-testid='location'
                       required
-                    />
-                    {/* <div className={styles.vl}></div> */}
+                    /> */}
                   </Grid.Column>
-                  <Grid.Column width={3} className={styles.inputGrid}>
+                  <Grid.Column width={4} className={styles.inputGrid}>
                     <input
                       type='text'
                       name='startDate'
                       placeholder='Check-in'
                       onFocus={_onFocus}
                       onBlur={_onBlur}
-                      // value={startDate}
+                      value={startDate}
                       className={styles.inputField}
                       min={new Date().toISOString().slice(0, -14)}
                       max={new Date(
@@ -77,7 +91,7 @@ const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
                     />
                     {/* <div className={styles.vl}></div> */}
                   </Grid.Column>
-                  <Grid.Column width={3} className={styles.inputGrid}>
+                  <Grid.Column width={4} className={styles.inputGrid}>
                     <input
                       type='text'
                       name='endDate'

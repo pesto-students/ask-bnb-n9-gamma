@@ -93,3 +93,10 @@ button[type='submit'].submitButton {
 } */
 
 /* Input bar container - ends */
+
+.locationDropdown {
+  width: 10rem !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}

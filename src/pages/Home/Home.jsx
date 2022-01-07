@@ -54,7 +54,7 @@ const Home = ({ history, addFilters, hotel: { filter }, activateModal }) => {
                   <Grid.Column width={4} className={styles.inputGrid}>
                     <Dropdown
                       labeled
-                      className={styles.locationDropdown}
+                      className={`${styles.locationDropdown} appClass`}
                       defaultValue={location || ''}
                       onChange={(e, { value }) => setLocation(value)}
                       options={countryOptions}

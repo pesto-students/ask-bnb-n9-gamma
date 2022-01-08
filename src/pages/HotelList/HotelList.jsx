@@ -60,8 +60,8 @@ const HotelList = ({
 
   if (loading) {
     return (
-      <div className="loaderContainer">
-        <Loader width="5rem" height="5rem" />
+      <div className='loaderContainer'>
+        <Loader width='5rem' height='5rem' />
       </div>
     );
   }
@@ -70,13 +70,14 @@ const HotelList = ({
     <>
       <div>
         <Header
-          color="#2E2E2E"
+          color='#2E2E2E'
           history={history}
           activateModal={activateModal}
         />
-        <div className={styles.listSummary} data-testid="listsummary">
+        <div className={styles.listSummary} data-testid='listsummary'>
           <div className={styles.filterDetails}>
-            100+ stays | {moment(startDate).format('Do MMMM')} to{' '}
+            {hotelList.length || 0} stays |{' '}
+            {moment(startDate).format('Do MMMM')} to{' '}
             {moment(endDate).format('Do MMMM')} | {range1.diff('days')} days |{' '}
             {filter.guests} guests
           </div>
@@ -90,7 +91,7 @@ const HotelList = ({
             )}
           </div>
         </div>
-        <div className={styles.hotelListWrapper} data-testid="hotellist">
+        <div className={styles.hotelListWrapper} data-testid='hotellist'>
           {hotelList.length ? (
             <Grid>{getIndividualItems()}</Grid>
           ) : (

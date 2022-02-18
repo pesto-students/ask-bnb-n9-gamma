@@ -1,4 +1,5 @@
 import {
+	ADD_REVIEW,
 	GET_HOTEL_LIST,
 	GET_REVIEW,
 	GET_ROOM_LIST,
@@ -24,6 +25,8 @@ export default (state = initialState, { type, payload }) => {
 	switch (type) {
 		case SET_FILTER:
 			return { ...state, filter: { ...payload } };
+		case ADD_REVIEW:
+			return { ...state, review: [payload, ...state.review] };
 		case GET_REVIEW:
 			return { ...state, review: [...payload] };
 		case SET_LOADING:

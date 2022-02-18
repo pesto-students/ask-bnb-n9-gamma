@@ -2,6 +2,7 @@ export const REGISTER_USER = 'REGISTER_USER';
 export const GET_USER = 'GET_USER';
 export const SET_USER = 'SET_USER';
 export const SET_FILTER = 'SET_FILTER';
+export const ADD_REVIEW = 'ADD_REVIEW';
 export const GET_REVIEW = 'GET_REVIEW';
 export const GET_HOTEL_LIST = 'GET_HOTEL_LIST';
 export const SET_BLOCKED_ROOMS = 'SET_BLOCKED_ROOMS';

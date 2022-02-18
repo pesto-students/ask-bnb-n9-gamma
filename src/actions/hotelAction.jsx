@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+	ADD_REVIEW,
 	GET_HOTEL_LIST,
 	GET_REVIEW,
 	GET_ROOM_LIST,
@@ -48,17 +49,19 @@ export const getHotels = location => async dispatch => {
 };
 
 export const addReviews =
-	(hotel_id, rating, comment, name) => async dispatch => {
+	({ hotel_id, rating, myReview: comment, name }) =>
+	async dispatch => {
 		try {
 			const body = { hotel_id, rating, comment, name };
+			console.log(body);
 			const res = await axios.post(
-				`${API_ENDPOINT}api/hotel/addReviews`,
+				`${API_ENDPOINT}api/hotel/addReview`,
 				body
 			);
 			const data = res.data;
 			console.log(data);
 			dispatch({
-				type: GET_REVIEW,
+				type: ADD_REVIEW,
 				payload: data.data,
 			});
 		} catch (error) {

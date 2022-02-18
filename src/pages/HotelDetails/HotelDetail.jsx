@@ -6,7 +6,7 @@ import { FaPlus, FaRegTrashAlt } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { Button, Grid } from 'semantic-ui-react';
 
-import { blockRooms, getReviews } from '../../actions/hotelAction';
+import { blockRooms, getReviews, addReviews } from '../../actions/hotelAction';
 import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 import styles from './HotelDetail.module.css';
@@ -19,6 +19,7 @@ const HotelDetail = ({
 	filter: { startDate, endDate, guests },
 	blockRooms,
 	getReviews,
+	addReviews,
 	history,
 	review,
 }) => {
@@ -236,7 +237,7 @@ const HotelDetail = ({
 					<h4>{currentHotel.city}</h4>
 					<a href='#reviews' style={{ paddingLeft: '1rem' }}>
 						{' '}
-						(Ave. rating: {(+currentHotel.ratings).toFixed(2)})
+						(Ave. rating: {(+currentHotel.ratings).toPrecision(2)})
 					</a>
 				</div>
 				<div className={styles.imageContainer}>
@@ -261,7 +262,11 @@ const HotelDetail = ({
 					<div className='availedAmenities'></div>
 				</div>
 				<section id={'reviews'}>
-					<Review review={review} currentHotel={currentHotel} />
+					<Review
+						review={review}
+						currentHotel={currentHotel}
+						addReviews={addReviews}
+					/>
 				</section>
 			</div>
 			<Footer />
@@ -273,6 +278,7 @@ HotelDetail.propTypes = {
 	currentHotel: PropTypes.object.isRequired,
 	review: PropTypes.object.isRequired,
 	blockRooms: PropTypes.func.isRequired,
+	addReviews: PropTypes.func.isRequired,
 };
 
 const mapStateToProp = state => ({
@@ -281,4 +287,6 @@ const mapStateToProp = state => ({
 	filter: state.hotel.filter,
 });
 
-export default connect(mapStateToProp, { blockRooms, getReviews })(HotelDetail);
+export default connect(mapStateToProp, { blockRooms, getReviews, addReviews })(
+	HotelDetail
+);

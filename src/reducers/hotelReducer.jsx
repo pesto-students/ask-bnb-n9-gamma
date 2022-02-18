@@ -33,6 +33,7 @@ export default (state = initialState, { type, payload }) => {
 		case SHOW_AUTH_MODAL:
 			return { ...state, showModal: true };
 		case GET_ROOM_LIST:
+			console.log('payload', payload);
 			return {
 				...state,
 				current: state.hotelList.filter(

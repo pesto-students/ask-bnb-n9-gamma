@@ -117,6 +117,7 @@ export const confirmRooms =
 
 export const setCurrentRoom = id => async dispatch => {
 	try {
+		console.log('id', id);
 		dispatch({
 			type: GET_ROOM_LIST,
 			payload: id,

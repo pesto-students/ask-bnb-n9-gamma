@@ -236,7 +236,7 @@ const HotelDetail = ({
 					<h4>{currentHotel.city}</h4>
 					<a href='#reviews' style={{ paddingLeft: '1rem' }}>
 						{' '}
-						(Ave. rating: {currentHotel.ratings.toFixed(2)})
+						(Ave. rating: {(+currentHotel.ratings).toFixed(2)})
 					</a>
 				</div>
 				<div className={styles.imageContainer}>

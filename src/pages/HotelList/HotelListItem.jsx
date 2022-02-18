@@ -69,7 +69,9 @@ const HotelListItem = prop => {
 							</div>
 							<div className={styles.reviewContainer}>
 								<FaStar color='yellow' />
-								{console.log(data?.ratings?.toFixed(1))}{' '}
+								{console.log(
+									parseInt(data?.ratings)?.toFixed(1)
+								)}{' '}
 								{data?.ratings?.toFixed(1)} (
 								<span>{data.reviews}</span>)
 							</div>

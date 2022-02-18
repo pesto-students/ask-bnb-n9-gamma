@@ -18,10 +18,9 @@ export const Review = ({
 		addReviews({ name, rating, myReview, hotel_id });
 	};
 
-	if (!review.length)
-		return (
-			<div className={styles.reviewWrapper}>No Reviews Available yet</div>
-		);
+	const noReview = () => (
+		<div className={styles.reviewWrapper}>No Reviews Available yet</div>
+	);
 
 	return (
 		<div className={styles.reviewWrapper}>
@@ -35,33 +34,34 @@ export const Review = ({
 				<div className={styles.minDetail}>Recent 5 reviews</div>
 			)}
 			<div className={styles.reviewContainer}>
-				{review.length &&
-					review.map(rev => (
-						<div key={rev._id} className={styles.reviewItem}>
-							<div style={{ position: 'relative' }}>
-								<div className={styles.userName}>
-									<span style={{ minWidth: '10rem' }}>
-										{rev.name}
+				{!review.length
+					? noReview()
+					: review.map(rev => (
+							<div key={rev._id} className={styles.reviewItem}>
+								<div style={{ position: 'relative' }}>
+									<div className={styles.userName}>
+										<span style={{ minWidth: '10rem' }}>
+											{rev.name}
+										</span>
+										<span className={styles.ratingStyle}>
+											<FaStar
+												color='yellow'
+												style={{ marginRight: '5px' }}
+											/>{' '}
+											{rev.rating}
+										</span>
+									</div>
+									<span className={styles.dateContainer}>
+										{moment(rev.timeStamp).format(
+											'h:mm a - DD MMM yy'
+										)}
 									</span>
-									<span className={styles.ratingStyle}>
-										<FaStar
-											color='yellow'
-											style={{ marginRight: '5px' }}
-										/>{' '}
-										{rev.rating}
-									</span>
-								</div>
-								<span className={styles.dateContainer}>
-									{moment(rev.timeStamp).format(
-										'h:mm a - DD MMM yy'
-									)}
-								</span>
-								<div className={styles.userComment}>
-									{rev.comment}
+									<div className={styles.userComment}>
+										{rev.comment}
+									</div>
 								</div>
 							</div>
-						</div>
-					))}
+					  ))}
 			</div>
 
 			<div className={styles.addCommentContainer}>
@@ -73,7 +73,6 @@ export const Review = ({
 					onChange={e => setMyReview(e.target.value)}
 				></textarea>
 				<div>
-					{/* <FaStar color='yellow' size={100} />; */}
 					{[...Array(5)].map((star, i) => (
 						<FaStar
 							values={i + 1}

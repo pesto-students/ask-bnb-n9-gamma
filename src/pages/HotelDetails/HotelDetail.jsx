@@ -11,7 +11,6 @@ import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 import styles from './HotelDetail.module.css';
 import { Review } from './Review';
-import { Link } from 'react-router-dom';
 
 const moment = extendMoment(Moment);
 
@@ -235,7 +234,7 @@ const HotelDetail = ({
 				<div className={styles.hotelName}>
 					<h1>{currentHotel.hotel_name}</h1>,{' '}
 					<h4>{currentHotel.city}</h4>
-					<a href='#section1' style={{ paddingLeft: '1rem' }}>
+					<a href='#reviews' style={{ paddingLeft: '1rem' }}>
 						{' '}
 						(Ave. rating: {currentHotel.ratings.toFixed(2)})
 					</a>
@@ -261,7 +260,7 @@ const HotelDetail = ({
 					<div className='amenityHeader'></div>
 					<div className='availedAmenities'></div>
 				</div>
-				<section id={'section1'}>
+				<section id={'reviews'}>
 					<Review review={review} currentHotel={currentHotel} />
 				</section>
 			</div>

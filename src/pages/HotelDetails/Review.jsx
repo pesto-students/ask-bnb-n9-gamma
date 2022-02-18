@@ -10,7 +10,8 @@ export const Review = ({ review, currentHotel: { reviews, ratings } }) => {
 		<div className={styles.reviewWrapper}>
 			<div className={styles.heading}>
 				Reviews{' '}
-				<span className={styles.minDetail}>{`- ${ratings?.toFixed(1)} 
+				<span className={styles.minDetail}>{`- 
+				${parseInt(ratings)?.toFixed(1)} 
 				(${reviews} reviews)`}</span>
 			</div>
 			<div className={styles.minDetail}>Recent 5 reviews</div>

@@ -18,7 +18,7 @@ export const Review = ({ review, currentHotel: { reviews, ratings } }) => {
 			<div className={styles.reviewContainer}>
 				{review.length &&
 					review.map(rev => (
-						<div className={styles.reviewItem}>
+						<div key={rev._id} className={styles.reviewItem}>
 							<div style={{ position: 'relative' }}>
 								<div className={styles.userName}>
 									<span style={{ minWidth: '10rem' }}>

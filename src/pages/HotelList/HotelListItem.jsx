@@ -67,11 +67,13 @@ const HotelListItem = prop => {
 									</div>
 								</div>
 							</div>
-							<div className={styles.reviewContainer}>
-								<FaStar color='yellow' />{' '}
-								{parseInt(data?.ratings)?.toFixed(1)} (
-								<span>{data.reviews}</span>)
-							</div>
+							{!!data.reviews && (
+								<div className={styles.reviewContainer}>
+									<FaStar color='yellow' />{' '}
+									{parseInt(data?.ratings)?.toFixed(1)} (
+									<span>{data.reviews}</span>)
+								</div>
+							)}
 						</div>
 					</Grid.Column>
 				</Grid.Row>

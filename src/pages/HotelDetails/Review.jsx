@@ -6,6 +6,12 @@ import styles from './Review.module.css';
 
 export const Review = ({ review, currentHotel: { reviews, ratings } }) => {
 	console.log(review);
+
+	if (!review.length)
+		return (
+			<div className={styles.reviewWrapper}>No Reviews Available yet</div>
+		);
+
 	return (
 		<div className={styles.reviewWrapper}>
 			<div className={styles.heading}>
@@ -14,7 +20,9 @@ export const Review = ({ review, currentHotel: { reviews, ratings } }) => {
 				${parseInt(ratings)?.toFixed(1)} 
 				(${reviews} reviews)`}</span>
 			</div>
-			<div className={styles.minDetail}>Recent 5 reviews</div>
+			{reviews > 5 && (
+				<div className={styles.minDetail}>Recent 5 reviews</div>
+			)}
 			<div className={styles.reviewContainer}>
 				{review.length &&
 					review.map(rev => (
@@ -26,7 +34,7 @@ export const Review = ({ review, currentHotel: { reviews, ratings } }) => {
 									</span>
 									<span className={styles.ratingStyle}>
 										<FaStar
-											color='gold'
+											color='yellow'
 											style={{ marginRight: '5px' }}
 										/>{' '}
 										{rev.rating}

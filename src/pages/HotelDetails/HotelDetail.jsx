@@ -11,6 +11,7 @@ import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 import styles from './HotelDetail.module.css';
 import { Review } from './Review';
+import { Link } from 'react-router-dom';
 
 const moment = extendMoment(Moment);
 
@@ -23,7 +24,6 @@ const HotelDetail = ({
 	review,
 }) => {
 	const { hotel_id, room_collection } = currentHotel;
-	console.log(currentHotel);
 
 	const [roomCount, setRoomCount] = useState(1);
 	const [minRoom] = useState(Math.ceil(guests / 2));
@@ -60,14 +60,14 @@ const HotelDetail = ({
 	const getMinRoomAvailed = () => {
 		let roomArray = getRoomBasedOnDate();
 		setRoomsSelected(roomArray);
-		console.log(roomsSelected);
+		// console.log(roomsSelected);
 		let totalRoomBasedOnDate = roomArray.length;
 		let totalRoomBasedOnGuest = guests;
 		let maxRoom =
 			totalRoomBasedOnDate < totalRoomBasedOnGuest
 				? totalRoomBasedOnDate
 				: totalRoomBasedOnGuest;
-		console.log('maxRoom', maxRoom);
+		// console.log('maxRoom', maxRoom);
 		setMaxRoomAvailable(maxRoom);
 	};
 
@@ -235,6 +235,10 @@ const HotelDetail = ({
 				<div className={styles.hotelName}>
 					<h1>{currentHotel.hotel_name}</h1>,{' '}
 					<h4>{currentHotel.city}</h4>
+					<a href='#section1' style={{ paddingLeft: '1rem' }}>
+						{' '}
+						(Ave. rating: {currentHotel.ratings.toFixed(2)})
+					</a>
 				</div>
 				<div className={styles.imageContainer}>
 					<div className={styles.mainImageContainer}>
@@ -257,7 +261,9 @@ const HotelDetail = ({
 					<div className='amenityHeader'></div>
 					<div className='availedAmenities'></div>
 				</div>
-				<Review review={review} currentHotel={currentHotel} />
+				<section id={'section1'}>
+					<Review review={review} currentHotel={currentHotel} />
+				</section>
 			</div>
 			<Footer />
 		</>
